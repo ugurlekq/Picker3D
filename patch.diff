@@ -1,0 +1,4127 @@
+From c7f8dd95d6e3b437da954fde80a781a48a55a56c Mon Sep 17 00:00:00 2001
+From: "MSI\\baris" <barisgurlek@hotmail.com>
+Date: Sat, 10 Feb 2024 18:24:35 +0300
+Subject: [PATCH] Project Init
+
+---
+ .vsconfig                                     |   6 +
+ Assets/Scenes.meta                            |   8 +
+ Assets/Scenes/MainScene.unity                 | 341 +++++++
+ Assets/Scenes/MainScene.unity.meta            |   7 +
+ Assets/Settings.meta                          |   8 +
+ Assets/Settings/URP-Balanced-Renderer.asset   |  76 ++
+ .../Settings/URP-Balanced-Renderer.asset.meta |   8 +
+ Assets/Settings/URP-Balanced.asset            | 114 +++
+ Assets/Settings/URP-Balanced.asset.meta       |   8 +
+ .../Settings/URP-HighFidelity-Renderer.asset  |  98 ++
+ .../URP-HighFidelity-Renderer.asset.meta      |   8 +
+ Assets/Settings/URP-HighFidelity.asset        | 114 +++
+ Assets/Settings/URP-HighFidelity.asset.meta   |   8 +
+ Assets/Settings/URP-Performant-Renderer.asset |  52 +
+ .../URP-Performant-Renderer.asset.meta        |   8 +
+ Assets/Settings/URP-Performant.asset          |  69 ++
+ Assets/Settings/URP-Performant.asset.meta     |   8 +
+ ...niversalRenderPipelineGlobalSettings.asset |  41 +
+ ...salRenderPipelineGlobalSettings.asset.meta |   8 +
+ Packages/manifest.json                        |  45 +
+ Packages/packages-lock.json                   | 401 ++++++++
+ ProjectSettings/AudioManager.asset            |  19 +
+ .../BurstAotSettings_StandaloneWindows.json   |  16 +
+ ProjectSettings/ClusterInputManager.asset     |   6 +
+ ProjectSettings/CommonBurstAotSettings.json   |   6 +
+ ProjectSettings/DynamicsManager.asset         |  36 +
+ ProjectSettings/EditorBuildSettings.asset     |  14 +
+ ProjectSettings/EditorSettings.asset          |  35 +
+ ProjectSettings/GraphicsSettings.asset        |  70 ++
+ ProjectSettings/InputManager.asset            | 487 +++++++++
+ ProjectSettings/MemorySettings.asset          |  35 +
+ ProjectSettings/NavMeshAreas.asset            |  91 ++
+ ProjectSettings/PackageManagerSettings.asset  |  43 +
+ ProjectSettings/Physics2DSettings.asset       |  56 ++
+ ProjectSettings/PresetManager.asset           |   7 +
+ ProjectSettings/ProjectSettings.asset         | 926 ++++++++++++++++++
+ ProjectSettings/ProjectVersion.txt            |   2 +
+ ProjectSettings/QualitySettings.asset         | 136 +++
+ ProjectSettings/SceneTemplateSettings.json    | 167 ++++
+ ProjectSettings/ShaderGraphSettings.asset     |  17 +
+ ProjectSettings/TagManager.asset              |  43 +
+ ProjectSettings/TimeManager.asset             |   9 +
+ ProjectSettings/URPProjectSettings.asset      |  15 +
+ ProjectSettings/UnityConnectSettings.asset    |  36 +
+ ProjectSettings/VFXManager.asset              |  12 +
+ ProjectSettings/VersionControlSettings.asset  |   8 +
+ ProjectSettings/XRSettings.asset              |  10 +
+ 47 files changed, 3738 insertions(+)
+ create mode 100644 .vsconfig
+ create mode 100644 Assets/Scenes.meta
+ create mode 100644 Assets/Scenes/MainScene.unity
+ create mode 100644 Assets/Scenes/MainScene.unity.meta
+ create mode 100644 Assets/Settings.meta
+ create mode 100644 Assets/Settings/URP-Balanced-Renderer.asset
+ create mode 100644 Assets/Settings/URP-Balanced-Renderer.asset.meta
+ create mode 100644 Assets/Settings/URP-Balanced.asset
+ create mode 100644 Assets/Settings/URP-Balanced.asset.meta
+ create mode 100644 Assets/Settings/URP-HighFidelity-Renderer.asset
+ create mode 100644 Assets/Settings/URP-HighFidelity-Renderer.asset.meta
+ create mode 100644 Assets/Settings/URP-HighFidelity.asset
+ create mode 100644 Assets/Settings/URP-HighFidelity.asset.meta
+ create mode 100644 Assets/Settings/URP-Performant-Renderer.asset
+ create mode 100644 Assets/Settings/URP-Performant-Renderer.asset.meta
+ create mode 100644 Assets/Settings/URP-Performant.asset
+ create mode 100644 Assets/Settings/URP-Performant.asset.meta
+ create mode 100644 Assets/UniversalRenderPipelineGlobalSettings.asset
+ create mode 100644 Assets/UniversalRenderPipelineGlobalSettings.asset.meta
+ create mode 100644 Packages/manifest.json
+ create mode 100644 Packages/packages-lock.json
+ create mode 100644 ProjectSettings/AudioManager.asset
+ create mode 100644 ProjectSettings/BurstAotSettings_StandaloneWindows.json
+ create mode 100644 ProjectSettings/ClusterInputManager.asset
+ create mode 100644 ProjectSettings/CommonBurstAotSettings.json
+ create mode 100644 ProjectSettings/DynamicsManager.asset
+ create mode 100644 ProjectSettings/EditorBuildSettings.asset
+ create mode 100644 ProjectSettings/EditorSettings.asset
+ create mode 100644 ProjectSettings/GraphicsSettings.asset
+ create mode 100644 ProjectSettings/InputManager.asset
+ create mode 100644 ProjectSettings/MemorySettings.asset
+ create mode 100644 ProjectSettings/NavMeshAreas.asset
+ create mode 100644 ProjectSettings/PackageManagerSettings.asset
+ create mode 100644 ProjectSettings/Physics2DSettings.asset
+ create mode 100644 ProjectSettings/PresetManager.asset
+ create mode 100644 ProjectSettings/ProjectSettings.asset
+ create mode 100644 ProjectSettings/ProjectVersion.txt
+ create mode 100644 ProjectSettings/QualitySettings.asset
+ create mode 100644 ProjectSettings/SceneTemplateSettings.json
+ create mode 100644 ProjectSettings/ShaderGraphSettings.asset
+ create mode 100644 ProjectSettings/TagManager.asset
+ create mode 100644 ProjectSettings/TimeManager.asset
+ create mode 100644 ProjectSettings/URPProjectSettings.asset
+ create mode 100644 ProjectSettings/UnityConnectSettings.asset
+ create mode 100644 ProjectSettings/VFXManager.asset
+ create mode 100644 ProjectSettings/VersionControlSettings.asset
+ create mode 100644 ProjectSettings/XRSettings.asset
+
+diff --git a/.vsconfig b/.vsconfig
+new file mode 100644
+index 0000000..f019fd0
+--- /dev/null
++++ b/.vsconfig
+@@ -0,0 +1,6 @@
++{
++  "version": "1.0",
++  "components": [
++    "Microsoft.VisualStudio.Workload.ManagedGame"
++  ]
++}
+diff --git a/Assets/Scenes.meta b/Assets/Scenes.meta
+new file mode 100644
+index 0000000..2bbdd9a
+--- /dev/null
++++ b/Assets/Scenes.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 5482bbfbe69cbd04c84177717161eb13
++folderAsset: yes
++DefaultImporter:
++  externalObjects: {}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity
+new file mode 100644
+index 0000000..108a116
+--- /dev/null
++++ b/Assets/Scenes/MainScene.unity
+@@ -0,0 +1,341 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!29 &1
++OcclusionCullingSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 2
++  m_OcclusionBakeSettings:
++    smallestOccluder: 5
++    smallestHole: 0.25
++    backfaceThreshold: 100
++  m_SceneGUID: 00000000000000000000000000000000
++  m_OcclusionCullingData: {fileID: 0}
++--- !u!104 &2
++RenderSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 9
++  m_Fog: 0
++  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
++  m_FogMode: 3
++  m_FogDensity: 0.01
++  m_LinearFogStart: 0
++  m_LinearFogEnd: 300
++  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
++  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
++  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
++  m_AmbientIntensity: 1
++  m_AmbientMode: 0
++  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
++  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
++  m_HaloStrength: 0.5
++  m_FlareStrength: 1
++  m_FlareFadeSpeed: 3
++  m_HaloTexture: {fileID: 0}
++  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
++  m_DefaultReflectionMode: 0
++  m_DefaultReflectionResolution: 128
++  m_ReflectionBounces: 1
++  m_ReflectionIntensity: 1
++  m_CustomReflection: {fileID: 0}
++  m_Sun: {fileID: 0}
++  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
++  m_UseRadianceAmbientProbe: 0
++--- !u!157 &3
++LightmapSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 12
++  m_GIWorkflowMode: 1
++  m_GISettings:
++    serializedVersion: 2
++    m_BounceScale: 1
++    m_IndirectOutputScale: 1
++    m_AlbedoBoost: 1
++    m_EnvironmentLightingMode: 0
++    m_EnableBakedLightmaps: 1
++    m_EnableRealtimeLightmaps: 0
++  m_LightmapEditorSettings:
++    serializedVersion: 12
++    m_Resolution: 2
++    m_BakeResolution: 40
++    m_AtlasSize: 1024
++    m_AO: 0
++    m_AOMaxDistance: 1
++    m_CompAOExponent: 1
++    m_CompAOExponentDirect: 0
++    m_ExtractAmbientOcclusion: 0
++    m_Padding: 2
++    m_LightmapParameters: {fileID: 0}
++    m_LightmapsBakeMode: 1
++    m_TextureCompression: 1
++    m_FinalGather: 0
++    m_FinalGatherFiltering: 1
++    m_FinalGatherRayCount: 256
++    m_ReflectionCompression: 2
++    m_MixedBakeMode: 2
++    m_BakeBackend: 1
++    m_PVRSampling: 1
++    m_PVRDirectSampleCount: 32
++    m_PVRSampleCount: 512
++    m_PVRBounces: 2
++    m_PVREnvironmentSampleCount: 256
++    m_PVREnvironmentReferencePointCount: 2048
++    m_PVRFilteringMode: 1
++    m_PVRDenoiserTypeDirect: 1
++    m_PVRDenoiserTypeIndirect: 1
++    m_PVRDenoiserTypeAO: 1
++    m_PVRFilterTypeDirect: 0
++    m_PVRFilterTypeIndirect: 0
++    m_PVRFilterTypeAO: 0
++    m_PVREnvironmentMIS: 1
++    m_PVRCulling: 1
++    m_PVRFilteringGaussRadiusDirect: 1
++    m_PVRFilteringGaussRadiusIndirect: 5
++    m_PVRFilteringGaussRadiusAO: 2
++    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
++    m_PVRFilteringAtrousPositionSigmaIndirect: 2
++    m_PVRFilteringAtrousPositionSigmaAO: 1
++    m_ExportTrainingData: 0
++    m_TrainingDataDestination: TrainingData
++    m_LightProbeSampleCountMultiplier: 4
++  m_LightingDataAsset: {fileID: 0}
++  m_LightingSettings: {fileID: 0}
++--- !u!196 &4
++NavMeshSettings:
++  serializedVersion: 2
++  m_ObjectHideFlags: 0
++  m_BuildSettings:
++    serializedVersion: 3
++    agentTypeID: 0
++    agentRadius: 0.5
++    agentHeight: 2
++    agentSlope: 45
++    agentClimb: 0.4
++    ledgeDropHeight: 0
++    maxJumpAcrossDistance: 0
++    minRegionArea: 2
++    manualCellSize: 0
++    cellSize: 0.16666667
++    manualTileSize: 0
++    tileSize: 256
++    buildHeightMesh: 0
++    maxJobWorkers: 0
++    preserveTilesOutsideBounds: 0
++    debug:
++      m_Flags: 0
++  m_NavMeshData: {fileID: 0}
++--- !u!1 &340398615
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 340398618}
++  - component: {fileID: 340398617}
++  - component: {fileID: 340398616}
++  m_Layer: 0
++  m_Name: Directional Light
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!114 &340398616
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 340398615}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_Version: 3
++  m_UsePipelineSettings: 1
++  m_AdditionalLightsShadowResolutionTier: 2
++  m_LightLayerMask: 1
++  m_RenderingLayers: 1
++  m_CustomShadowLayers: 0
++  m_ShadowLayerMask: 1
++  m_ShadowRenderingLayers: 1
++  m_LightCookieSize: {x: 1, y: 1}
++  m_LightCookieOffset: {x: 0, y: 0}
++  m_SoftShadowQuality: 0
++--- !u!108 &340398617
++Light:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 340398615}
++  m_Enabled: 1
++  serializedVersion: 10
++  m_Type: 1
++  m_Shape: 0
++  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
++  m_Intensity: 1
++  m_Range: 10
++  m_SpotAngle: 30
++  m_InnerSpotAngle: 21.80208
++  m_CookieSize: 10
++  m_Shadows:
++    m_Type: 2
++    m_Resolution: -1
++    m_CustomResolution: -1
++    m_Strength: 1
++    m_Bias: 0.05
++    m_NormalBias: 0.4
++    m_NearPlane: 0.2
++    m_CullingMatrixOverride:
++      e00: 1
++      e01: 0
++      e02: 0
++      e03: 0
++      e10: 0
++      e11: 1
++      e12: 0
++      e13: 0
++      e20: 0
++      e21: 0
++      e22: 1
++      e23: 0
++      e30: 0
++      e31: 0
++      e32: 0
++      e33: 1
++    m_UseCullingMatrixOverride: 0
++  m_Cookie: {fileID: 0}
++  m_DrawHalo: 0
++  m_Flare: {fileID: 0}
++  m_RenderMode: 0
++  m_CullingMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_RenderingLayerMask: 1
++  m_Lightmapping: 4
++  m_LightShadowCasterMode: 0
++  m_AreaSize: {x: 1, y: 1}
++  m_BounceIntensity: 1
++  m_ColorTemperature: 6570
++  m_UseColorTemperature: 0
++  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
++  m_UseBoundingSphereOverride: 0
++  m_UseViewFrustumForShadowCasterCull: 1
++  m_ShadowRadius: 0
++  m_ShadowAngle: 0
++--- !u!4 &340398618
++Transform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 340398615}
++  serializedVersion: 2
++  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
++  m_LocalPosition: {x: 0, y: 3, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children: []
++  m_Father: {fileID: 0}
++  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
++--- !u!1 &1034224555
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1034224558}
++  - component: {fileID: 1034224557}
++  - component: {fileID: 1034224556}
++  m_Layer: 0
++  m_Name: Main Camera
++  m_TagString: MainCamera
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!81 &1034224556
++AudioListener:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1034224555}
++  m_Enabled: 1
++--- !u!20 &1034224557
++Camera:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1034224555}
++  m_Enabled: 1
++  serializedVersion: 2
++  m_ClearFlags: 1
++  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
++  m_projectionMatrixMode: 1
++  m_GateFitMode: 2
++  m_FOVAxisMode: 0
++  m_Iso: 200
++  m_ShutterSpeed: 0.005
++  m_Aperture: 16
++  m_FocusDistance: 10
++  m_FocalLength: 50
++  m_BladeCount: 5
++  m_Curvature: {x: 2, y: 11}
++  m_BarrelClipping: 0.25
++  m_Anamorphism: 0
++  m_SensorSize: {x: 36, y: 24}
++  m_LensShift: {x: 0, y: 0}
++  m_NormalizedViewPortRect:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++  near clip plane: 0.3
++  far clip plane: 1000
++  field of view: 60
++  orthographic: 0
++  orthographic size: 5
++  m_Depth: -1
++  m_CullingMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_RenderingPath: -1
++  m_TargetTexture: {fileID: 0}
++  m_TargetDisplay: 0
++  m_TargetEye: 3
++  m_HDR: 1
++  m_AllowMSAA: 1
++  m_AllowDynamicResolution: 0
++  m_ForceIntoRT: 0
++  m_OcclusionCulling: 1
++  m_StereoConvergence: 10
++  m_StereoSeparation: 0.022
++--- !u!4 &1034224558
++Transform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1034224555}
++  serializedVersion: 2
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 1, z: -10}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children: []
++  m_Father: {fileID: 0}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++--- !u!1660057539 &9223372036854775807
++SceneRoots:
++  m_ObjectHideFlags: 0
++  m_Roots:
++  - {fileID: 1034224558}
++  - {fileID: 340398618}
+diff --git a/Assets/Scenes/MainScene.unity.meta b/Assets/Scenes/MainScene.unity.meta
+new file mode 100644
+index 0000000..a025177
+--- /dev/null
++++ b/Assets/Scenes/MainScene.unity.meta
+@@ -0,0 +1,7 @@
++fileFormatVersion: 2
++guid: 46589c68552c2524ba4da2fc8b2c23a8
++DefaultImporter:
++  externalObjects: {}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Settings.meta b/Assets/Settings.meta
+new file mode 100644
+index 0000000..39b94dd
+--- /dev/null
++++ b/Assets/Settings.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 709f11a7f3c4041caa4ef136ea32d874
++folderAsset: yes
++DefaultImporter:
++  externalObjects: {}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Settings/URP-Balanced-Renderer.asset b/Assets/Settings/URP-Balanced-Renderer.asset
+new file mode 100644
+index 0000000..20bd4d4
+--- /dev/null
++++ b/Assets/Settings/URP-Balanced-Renderer.asset
+@@ -0,0 +1,76 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &-1878332245247344467
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
++  m_Name: SSAO
++  m_EditorClassIdentifier: 
++  m_Active: 1
++  m_Shader: {fileID: 0}
++  m_Settings:
++    Downsample: 1
++    AfterOpaque: 0
++    Source: 0
++    NormalSamples: 0
++    Intensity: 0.5
++    DirectLightingStrength: 0.25
++    Radius: 0.25
++    SampleCount: 4
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
++  m_Name: URP-Balanced-Renderer
++  m_EditorClassIdentifier: 
++  debugShaders:
++    debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7,
++      type: 3}
++  m_RendererFeatures:
++  - {fileID: -1878332245247344467}
++  m_RendererFeatureMap: adc0de57c6d2eee5
++  m_UseNativeRenderPass: 0
++  postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
++  shaders:
++    blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
++    copyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
++    screenSpaceShadowPS: {fileID: 0}
++    samplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
++    stencilDeferredPS: {fileID: 4800000, guid: e9155b26e1bc55942a41e518703fe304, type: 3}
++    fallbackErrorPS: {fileID: 4800000, guid: e6e9a19c3678ded42a3bc431ebef7dbd, type: 3}
++    materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
++    coreBlitPS: {fileID: 0}
++    coreBlitColorAndDepthPS: {fileID: 0}
++    cameraMotionVector: {fileID: 0}
++    objectMotionVector: {fileID: 0}
++  m_OpaqueLayerMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_TransparentLayerMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_DefaultStencilState:
++    overrideStencilState: 0
++    stencilReference: 0
++    stencilCompareFunction: 8
++    passOperation: 2
++    failOperation: 0
++    zFailOperation: 0
++  m_ShadowTransparentReceive: 1
++  m_RenderingMode: 0
++  m_DepthPrimingMode: 0
++  m_AccurateGbufferNormals: 0
++  m_ClusteredRendering: 0
++  m_TileSize: 32
+diff --git a/Assets/Settings/URP-Balanced-Renderer.asset.meta b/Assets/Settings/URP-Balanced-Renderer.asset.meta
+new file mode 100644
+index 0000000..8fa7f17
+--- /dev/null
++++ b/Assets/Settings/URP-Balanced-Renderer.asset.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: e634585d5c4544dd297acaee93dc2beb
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Settings/URP-Balanced.asset b/Assets/Settings/URP-Balanced.asset
+new file mode 100644
+index 0000000..65bbfc8
+--- /dev/null
++++ b/Assets/Settings/URP-Balanced.asset
+@@ -0,0 +1,114 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
++  m_Name: URP-Balanced
++  m_EditorClassIdentifier: 
++  k_AssetVersion: 11
++  k_AssetPreviousVersion: 11
++  m_RendererType: 1
++  m_RendererData: {fileID: 0}
++  m_RendererDataList:
++  - {fileID: 11400000, guid: e634585d5c4544dd297acaee93dc2beb, type: 2}
++  m_DefaultRendererIndex: 0
++  m_RequireDepthTexture: 0
++  m_RequireOpaqueTexture: 0
++  m_OpaqueDownsampling: 1
++  m_SupportsTerrainHoles: 1
++  m_SupportsHDR: 1
++  m_HDRColorBufferPrecision: 0
++  m_MSAA: 1
++  m_RenderScale: 1
++  m_UpscalingFilter: 0
++  m_FsrOverrideSharpness: 0
++  m_FsrSharpness: 0.92
++  m_EnableLODCrossFade: 1
++  m_LODCrossFadeDitheringType: 1
++  m_ShEvalMode: 0
++  m_MainLightRenderingMode: 1
++  m_MainLightShadowsSupported: 1
++  m_MainLightShadowmapResolution: 1024
++  m_AdditionalLightsRenderingMode: 1
++  m_AdditionalLightsPerObjectLimit: 2
++  m_AdditionalLightShadowsSupported: 0
++  m_AdditionalLightsShadowmapResolution: 512
++  m_AdditionalLightsShadowResolutionTierLow: 128
++  m_AdditionalLightsShadowResolutionTierMedium: 256
++  m_AdditionalLightsShadowResolutionTierHigh: 512
++  m_ReflectionProbeBlending: 0
++  m_ReflectionProbeBoxProjection: 0
++  m_ShadowDistance: 50
++  m_ShadowCascadeCount: 1
++  m_Cascade2Split: 0.25
++  m_Cascade3Split: {x: 0.1, y: 0.3}
++  m_Cascade4Split: {x: 0.067, y: 0.2, z: 0.467}
++  m_CascadeBorder: 0.1
++  m_ShadowDepthBias: 1
++  m_ShadowNormalBias: 1
++  m_AnyShadowsSupported: 1
++  m_SoftShadowsSupported: 1
++  m_ConservativeEnclosingSphere: 0
++  m_NumIterationsEnclosingSphere: 64
++  m_SoftShadowQuality: 2
++  m_AdditionalLightsCookieResolution: 512
++  m_AdditionalLightsCookieFormat: 1
++  m_UseSRPBatcher: 1
++  m_SupportsDynamicBatching: 0
++  m_MixedLightingSupported: 1
++  m_SupportsLightCookies: 1
++  m_SupportsLightLayers: 0
++  m_DebugLevel: 0
++  m_StoreActionsOptimization: 0
++  m_EnableRenderGraph: 0
++  m_UseAdaptivePerformance: 1
++  m_ColorGradingMode: 0
++  m_ColorGradingLutSize: 32
++  m_UseFastSRGBLinearConversion: 0
++  m_SupportDataDrivenLensFlare: 1
++  m_ShadowType: 1
++  m_LocalShadowsSupported: 0
++  m_LocalShadowsAtlasResolution: 256
++  m_MaxPixelLights: 0
++  m_ShadowAtlasResolution: 256
++  m_VolumeFrameworkUpdateMode: 0
++  m_Textures:
++    blueNoise64LTex: {fileID: 2800000, guid: e3d24661c1e055f45a7560c033dbb837, type: 3}
++    bayerMatrixTex: {fileID: 2800000, guid: f9ee4ed84c1d10c49aabb9b210b0fc44, type: 3}
++  m_PrefilteringModeMainLightShadows: 1
++  m_PrefilteringModeAdditionalLight: 4
++  m_PrefilteringModeAdditionalLightShadows: 1
++  m_PrefilterXRKeywords: 0
++  m_PrefilteringModeForwardPlus: 1
++  m_PrefilteringModeDeferredRendering: 1
++  m_PrefilteringModeScreenSpaceOcclusion: 1
++  m_PrefilterDebugKeywords: 0
++  m_PrefilterWriteRenderingLayers: 0
++  m_PrefilterHDROutput: 0
++  m_PrefilterSSAODepthNormals: 0
++  m_PrefilterSSAOSourceDepthLow: 0
++  m_PrefilterSSAOSourceDepthMedium: 0
++  m_PrefilterSSAOSourceDepthHigh: 0
++  m_PrefilterSSAOInterleaved: 0
++  m_PrefilterSSAOBlueNoise: 0
++  m_PrefilterSSAOSampleCountLow: 0
++  m_PrefilterSSAOSampleCountMedium: 0
++  m_PrefilterSSAOSampleCountHigh: 0
++  m_PrefilterDBufferMRT1: 0
++  m_PrefilterDBufferMRT2: 0
++  m_PrefilterDBufferMRT3: 0
++  m_PrefilterSoftShadowsQualityLow: 0
++  m_PrefilterSoftShadowsQualityMedium: 0
++  m_PrefilterSoftShadowsQualityHigh: 0
++  m_PrefilterSoftShadows: 0
++  m_PrefilterScreenCoord: 0
++  m_PrefilterNativeRenderPass: 0
++  m_ShaderVariantLogLevel: 0
++  m_ShadowCascades: 0
+diff --git a/Assets/Settings/URP-Balanced.asset.meta b/Assets/Settings/URP-Balanced.asset.meta
+new file mode 100644
+index 0000000..f524db0
+--- /dev/null
++++ b/Assets/Settings/URP-Balanced.asset.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: e1260c1148f6143b28bae5ace5e9c5d1
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 0
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Settings/URP-HighFidelity-Renderer.asset b/Assets/Settings/URP-HighFidelity-Renderer.asset
+new file mode 100644
+index 0000000..d9cfc00
+--- /dev/null
++++ b/Assets/Settings/URP-HighFidelity-Renderer.asset
+@@ -0,0 +1,98 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &-1878332245247344467
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
++  m_Name: SSAO
++  m_EditorClassIdentifier: 
++  m_Active: 1
++  m_Settings:
++    AOMethod: 1
++    Downsample: 0
++    AfterOpaque: 0
++    Source: 1
++    NormalSamples: 1
++    Intensity: 0.5
++    DirectLightingStrength: 0.25
++    Radius: 0.25
++    Samples: 0
++    BlurQuality: 0
++    Falloff: 100
++    SampleCount: -1
++  m_BlueNoise256Textures:
++  - {fileID: 2800000, guid: 36f118343fc974119bee3d09e2111500, type: 3}
++  - {fileID: 2800000, guid: 4b7b083e6b6734e8bb2838b0b50a0bc8, type: 3}
++  - {fileID: 2800000, guid: c06cc21c692f94f5fb5206247191eeee, type: 3}
++  - {fileID: 2800000, guid: cb76dd40fa7654f9587f6a344f125c9a, type: 3}
++  - {fileID: 2800000, guid: e32226222ff144b24bf3a5a451de54bc, type: 3}
++  - {fileID: 2800000, guid: 3302065f671a8450b82c9ddf07426f3a, type: 3}
++  - {fileID: 2800000, guid: 56a77a3e8d64f47b6afe9e3c95cb57d5, type: 3}
++  m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
++  m_Name: URP-HighFidelity-Renderer
++  m_EditorClassIdentifier: 
++  debugShaders:
++    debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7,
++      type: 3}
++    hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
++  m_RendererFeatures:
++  - {fileID: -1878332245247344467}
++  m_RendererFeatureMap: adc0de57c6d2eee5
++  m_UseNativeRenderPass: 0
++  postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
++  xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
++  shaders:
++    blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
++    copyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
++    screenSpaceShadowPS: {fileID: 0}
++    samplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
++    stencilDeferredPS: {fileID: 4800000, guid: e9155b26e1bc55942a41e518703fe304, type: 3}
++    fallbackErrorPS: {fileID: 4800000, guid: e6e9a19c3678ded42a3bc431ebef7dbd, type: 3}
++    fallbackLoadingPS: {fileID: 4800000, guid: 7f888aff2ac86494babad1c2c5daeee2, type: 3}
++    materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
++    coreBlitPS: {fileID: 4800000, guid: 93446b5c5339d4f00b85c159e1159b7c, type: 3}
++    coreBlitColorAndDepthPS: {fileID: 4800000, guid: d104b2fc1ca6445babb8e90b0758136b,
++      type: 3}
++    blitHDROverlay: {fileID: 4800000, guid: a89bee29cffa951418fc1e2da94d1959, type: 3}
++    cameraMotionVector: {fileID: 4800000, guid: c56b7e0d4c7cb484e959caeeedae9bbf,
++      type: 3}
++    objectMotionVector: {fileID: 4800000, guid: 7b3ede40266cd49a395def176e1bc486,
++      type: 3}
++    dataDrivenLensFlare: {fileID: 4800000, guid: 6cda457ac28612740adb23da5d39ea92,
++      type: 3}
++  m_AssetVersion: 2
++  m_OpaqueLayerMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_TransparentLayerMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_DefaultStencilState:
++    overrideStencilState: 0
++    stencilReference: 0
++    stencilCompareFunction: 8
++    passOperation: 2
++    failOperation: 0
++    zFailOperation: 0
++  m_ShadowTransparentReceive: 1
++  m_RenderingMode: 0
++  m_DepthPrimingMode: 0
++  m_CopyDepthMode: 0
++  m_AccurateGbufferNormals: 0
++  m_IntermediateTextureMode: 1
+diff --git a/Assets/Settings/URP-HighFidelity-Renderer.asset.meta b/Assets/Settings/URP-HighFidelity-Renderer.asset.meta
+new file mode 100644
+index 0000000..bcdff02
+--- /dev/null
++++ b/Assets/Settings/URP-HighFidelity-Renderer.asset.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: c40be3174f62c4acf8c1216858c64956
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Settings/URP-HighFidelity.asset b/Assets/Settings/URP-HighFidelity.asset
+new file mode 100644
+index 0000000..d526597
+--- /dev/null
++++ b/Assets/Settings/URP-HighFidelity.asset
+@@ -0,0 +1,114 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
++  m_Name: URP-HighFidelity
++  m_EditorClassIdentifier: 
++  k_AssetVersion: 11
++  k_AssetPreviousVersion: 11
++  m_RendererType: 1
++  m_RendererData: {fileID: 0}
++  m_RendererDataList:
++  - {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
++  m_DefaultRendererIndex: 0
++  m_RequireDepthTexture: 0
++  m_RequireOpaqueTexture: 0
++  m_OpaqueDownsampling: 1
++  m_SupportsTerrainHoles: 1
++  m_SupportsHDR: 1
++  m_HDRColorBufferPrecision: 0
++  m_MSAA: 4
++  m_RenderScale: 1
++  m_UpscalingFilter: 0
++  m_FsrOverrideSharpness: 0
++  m_FsrSharpness: 0.92
++  m_EnableLODCrossFade: 1
++  m_LODCrossFadeDitheringType: 1
++  m_ShEvalMode: 0
++  m_MainLightRenderingMode: 1
++  m_MainLightShadowsSupported: 1
++  m_MainLightShadowmapResolution: 4096
++  m_AdditionalLightsRenderingMode: 1
++  m_AdditionalLightsPerObjectLimit: 8
++  m_AdditionalLightShadowsSupported: 1
++  m_AdditionalLightsShadowmapResolution: 4096
++  m_AdditionalLightsShadowResolutionTierLow: 128
++  m_AdditionalLightsShadowResolutionTierMedium: 256
++  m_AdditionalLightsShadowResolutionTierHigh: 512
++  m_ReflectionProbeBlending: 1
++  m_ReflectionProbeBoxProjection: 1
++  m_ShadowDistance: 150
++  m_ShadowCascadeCount: 4
++  m_Cascade2Split: 0.25
++  m_Cascade3Split: {x: 0.1, y: 0.3}
++  m_Cascade4Split: {x: 0.067, y: 0.2, z: 0.467}
++  m_CascadeBorder: 0.1
++  m_ShadowDepthBias: 1
++  m_ShadowNormalBias: 1
++  m_AnyShadowsSupported: 1
++  m_SoftShadowsSupported: 1
++  m_ConservativeEnclosingSphere: 0
++  m_NumIterationsEnclosingSphere: 64
++  m_SoftShadowQuality: 2
++  m_AdditionalLightsCookieResolution: 4096
++  m_AdditionalLightsCookieFormat: 4
++  m_UseSRPBatcher: 1
++  m_SupportsDynamicBatching: 0
++  m_MixedLightingSupported: 1
++  m_SupportsLightCookies: 1
++  m_SupportsLightLayers: 0
++  m_DebugLevel: 0
++  m_StoreActionsOptimization: 0
++  m_EnableRenderGraph: 0
++  m_UseAdaptivePerformance: 1
++  m_ColorGradingMode: 0
++  m_ColorGradingLutSize: 32
++  m_UseFastSRGBLinearConversion: 0
++  m_SupportDataDrivenLensFlare: 1
++  m_ShadowType: 1
++  m_LocalShadowsSupported: 0
++  m_LocalShadowsAtlasResolution: 256
++  m_MaxPixelLights: 0
++  m_ShadowAtlasResolution: 256
++  m_VolumeFrameworkUpdateMode: 0
++  m_Textures:
++    blueNoise64LTex: {fileID: 2800000, guid: e3d24661c1e055f45a7560c033dbb837, type: 3}
++    bayerMatrixTex: {fileID: 2800000, guid: f9ee4ed84c1d10c49aabb9b210b0fc44, type: 3}
++  m_PrefilteringModeMainLightShadows: 1
++  m_PrefilteringModeAdditionalLight: 4
++  m_PrefilteringModeAdditionalLightShadows: 1
++  m_PrefilterXRKeywords: 0
++  m_PrefilteringModeForwardPlus: 1
++  m_PrefilteringModeDeferredRendering: 1
++  m_PrefilteringModeScreenSpaceOcclusion: 1
++  m_PrefilterDebugKeywords: 0
++  m_PrefilterWriteRenderingLayers: 0
++  m_PrefilterHDROutput: 0
++  m_PrefilterSSAODepthNormals: 0
++  m_PrefilterSSAOSourceDepthLow: 0
++  m_PrefilterSSAOSourceDepthMedium: 0
++  m_PrefilterSSAOSourceDepthHigh: 0
++  m_PrefilterSSAOInterleaved: 0
++  m_PrefilterSSAOBlueNoise: 0
++  m_PrefilterSSAOSampleCountLow: 0
++  m_PrefilterSSAOSampleCountMedium: 0
++  m_PrefilterSSAOSampleCountHigh: 0
++  m_PrefilterDBufferMRT1: 0
++  m_PrefilterDBufferMRT2: 0
++  m_PrefilterDBufferMRT3: 0
++  m_PrefilterSoftShadowsQualityLow: 0
++  m_PrefilterSoftShadowsQualityMedium: 0
++  m_PrefilterSoftShadowsQualityHigh: 0
++  m_PrefilterSoftShadows: 0
++  m_PrefilterScreenCoord: 0
++  m_PrefilterNativeRenderPass: 0
++  m_ShaderVariantLogLevel: 0
++  m_ShadowCascades: 1
+diff --git a/Assets/Settings/URP-HighFidelity.asset.meta b/Assets/Settings/URP-HighFidelity.asset.meta
+new file mode 100644
+index 0000000..7416e17
+--- /dev/null
++++ b/Assets/Settings/URP-HighFidelity.asset.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 7b7fd9122c28c4d15b667c7040e3b3fd
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 0
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Settings/URP-Performant-Renderer.asset b/Assets/Settings/URP-Performant-Renderer.asset
+new file mode 100644
+index 0000000..56c53f0
+--- /dev/null
++++ b/Assets/Settings/URP-Performant-Renderer.asset
+@@ -0,0 +1,52 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
++  m_Name: URP-Performant-Renderer
++  m_EditorClassIdentifier: 
++  debugShaders:
++    debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7,
++      type: 3}
++  m_RendererFeatures: []
++  m_RendererFeatureMap: 
++  m_UseNativeRenderPass: 0
++  postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
++  shaders:
++    blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
++    copyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
++    screenSpaceShadowPS: {fileID: 0}
++    samplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
++    stencilDeferredPS: {fileID: 4800000, guid: e9155b26e1bc55942a41e518703fe304, type: 3}
++    fallbackErrorPS: {fileID: 4800000, guid: e6e9a19c3678ded42a3bc431ebef7dbd, type: 3}
++    materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
++    coreBlitPS: {fileID: 0}
++    coreBlitColorAndDepthPS: {fileID: 0}
++    cameraMotionVector: {fileID: 0}
++    objectMotionVector: {fileID: 0}
++  m_OpaqueLayerMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_TransparentLayerMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++  m_DefaultStencilState:
++    overrideStencilState: 0
++    stencilReference: 0
++    stencilCompareFunction: 8
++    passOperation: 2
++    failOperation: 0
++    zFailOperation: 0
++  m_ShadowTransparentReceive: 1
++  m_RenderingMode: 0
++  m_DepthPrimingMode: 0
++  m_AccurateGbufferNormals: 0
++  m_ClusteredRendering: 0
++  m_TileSize: 32
+diff --git a/Assets/Settings/URP-Performant-Renderer.asset.meta b/Assets/Settings/URP-Performant-Renderer.asset.meta
+new file mode 100644
+index 0000000..912ff60
+--- /dev/null
++++ b/Assets/Settings/URP-Performant-Renderer.asset.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 707360a9c581a4bd7aa53bfeb1429f71
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Settings/URP-Performant.asset b/Assets/Settings/URP-Performant.asset
+new file mode 100644
+index 0000000..5e53341
+--- /dev/null
++++ b/Assets/Settings/URP-Performant.asset
+@@ -0,0 +1,69 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
++  m_Name: URP-Performant
++  m_EditorClassIdentifier: 
++  k_AssetVersion: 9
++  k_AssetPreviousVersion: 9
++  m_RendererType: 1
++  m_RendererData: {fileID: 0}
++  m_RendererDataList:
++  - {fileID: 11400000, guid: 707360a9c581a4bd7aa53bfeb1429f71, type: 2}
++  m_DefaultRendererIndex: 0
++  m_RequireDepthTexture: 0
++  m_RequireOpaqueTexture: 0
++  m_OpaqueDownsampling: 1
++  m_SupportsTerrainHoles: 1
++  m_StoreActionsOptimization: 0
++  m_SupportsHDR: 0
++  m_MSAA: 1
++  m_RenderScale: 1
++  m_MainLightRenderingMode: 1
++  m_MainLightShadowsSupported: 0
++  m_MainLightShadowmapResolution: 1024
++  m_AdditionalLightsRenderingMode: 0
++  m_AdditionalLightsPerObjectLimit: 4
++  m_AdditionalLightShadowsSupported: 0
++  m_AdditionalLightsShadowmapResolution: 512
++  m_AdditionalLightsShadowResolutionTierLow: 128
++  m_AdditionalLightsShadowResolutionTierMedium: 256
++  m_AdditionalLightsShadowResolutionTierHigh: 512
++  m_ReflectionProbeBlending: 0
++  m_ReflectionProbeBoxProjection: 0
++  m_ShadowDistance: 50
++  m_ShadowCascadeCount: 1
++  m_Cascade2Split: 0.25
++  m_Cascade3Split: {x: 0.1, y: 0.3}
++  m_Cascade4Split: {x: 0.067, y: 0.2, z: 0.467}
++  m_CascadeBorder: 0.1
++  m_ShadowDepthBias: 1
++  m_ShadowNormalBias: 1
++  m_SoftShadowsSupported: 0
++  m_AdditionalLightsCookieResolution: 2048
++  m_AdditionalLightsCookieFormat: 3
++  m_UseSRPBatcher: 1
++  m_SupportsDynamicBatching: 0
++  m_MixedLightingSupported: 1
++  m_SupportsLightLayers: 0
++  m_DebugLevel: 0
++  m_UseAdaptivePerformance: 1
++  m_ColorGradingMode: 0
++  m_ColorGradingLutSize: 16
++  m_UseFastSRGBLinearConversion: 0
++  m_ShadowType: 1
++  m_LocalShadowsSupported: 0
++  m_LocalShadowsAtlasResolution: 256
++  m_MaxPixelLights: 0
++  m_ShadowAtlasResolution: 256
++  m_ShaderVariantLogLevel: 0
++  m_VolumeFrameworkUpdateMode: 0
++  m_ShadowCascades: 0
+diff --git a/Assets/Settings/URP-Performant.asset.meta b/Assets/Settings/URP-Performant.asset.meta
+new file mode 100644
+index 0000000..264c9c5
+--- /dev/null
++++ b/Assets/Settings/URP-Performant.asset.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: d0e2fc18fe036412f8223b3b3d9ad574
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 0
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/UniversalRenderPipelineGlobalSettings.asset b/Assets/UniversalRenderPipelineGlobalSettings.asset
+new file mode 100644
+index 0000000..0c0350e
+--- /dev/null
++++ b/Assets/UniversalRenderPipelineGlobalSettings.asset
+@@ -0,0 +1,41 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 2ec995e51a6e251468d2a3fd8a686257, type: 3}
++  m_Name: UniversalRenderPipelineGlobalSettings
++  m_EditorClassIdentifier: 
++  k_AssetVersion: 3
++  m_RenderingLayerNames:
++  - Light Layer default
++  - Light Layer 1
++  - Light Layer 2
++  - Light Layer 3
++  - Light Layer 4
++  - Light Layer 5
++  - Light Layer 6
++  - Light Layer 7
++  m_ValidRenderingLayers: 255
++  lightLayerName0: Light Layer default
++  lightLayerName1: Light Layer 1
++  lightLayerName2: Light Layer 2
++  lightLayerName3: Light Layer 3
++  lightLayerName4: Light Layer 4
++  lightLayerName5: Light Layer 5
++  lightLayerName6: Light Layer 6
++  lightLayerName7: Light Layer 7
++  m_StripDebugVariants: 1
++  m_StripUnusedPostProcessingVariants: 1
++  m_StripUnusedVariants: 1
++  m_StripUnusedLODCrossFadeVariants: 1
++  m_StripScreenCoordOverrideVariants: 1
++  supportRuntimeDebugDisplay: 0
++  m_ShaderVariantLogLevel: 0
++  m_ExportShaderVariants: 1
+diff --git a/Assets/UniversalRenderPipelineGlobalSettings.asset.meta b/Assets/UniversalRenderPipelineGlobalSettings.asset.meta
+new file mode 100644
+index 0000000..81b84f2
+--- /dev/null
++++ b/Assets/UniversalRenderPipelineGlobalSettings.asset.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 18dc0cd2c080841dea60987a38ce93fa
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Packages/manifest.json b/Packages/manifest.json
+new file mode 100644
+index 0000000..aec0271
+--- /dev/null
++++ b/Packages/manifest.json
+@@ -0,0 +1,45 @@
++{
++  "dependencies": {
++    "com.unity.collab-proxy": "2.2.0",
++    "com.unity.ide.rider": "3.0.27",
++    "com.unity.ide.visualstudio": "2.0.22",
++    "com.unity.ide.vscode": "1.2.5",
++    "com.unity.render-pipelines.universal": "14.0.10",
++    "com.unity.test-framework": "1.1.33",
++    "com.unity.textmeshpro": "3.0.6",
++    "com.unity.timeline": "1.7.6",
++    "com.unity.ugui": "1.0.0",
++    "com.unity.visualscripting": "1.9.1",
++    "com.unity.modules.ai": "1.0.0",
++    "com.unity.modules.androidjni": "1.0.0",
++    "com.unity.modules.animation": "1.0.0",
++    "com.unity.modules.assetbundle": "1.0.0",
++    "com.unity.modules.audio": "1.0.0",
++    "com.unity.modules.cloth": "1.0.0",
++    "com.unity.modules.director": "1.0.0",
++    "com.unity.modules.imageconversion": "1.0.0",
++    "com.unity.modules.imgui": "1.0.0",
++    "com.unity.modules.jsonserialize": "1.0.0",
++    "com.unity.modules.particlesystem": "1.0.0",
++    "com.unity.modules.physics": "1.0.0",
++    "com.unity.modules.physics2d": "1.0.0",
++    "com.unity.modules.screencapture": "1.0.0",
++    "com.unity.modules.terrain": "1.0.0",
++    "com.unity.modules.terrainphysics": "1.0.0",
++    "com.unity.modules.tilemap": "1.0.0",
++    "com.unity.modules.ui": "1.0.0",
++    "com.unity.modules.uielements": "1.0.0",
++    "com.unity.modules.umbra": "1.0.0",
++    "com.unity.modules.unityanalytics": "1.0.0",
++    "com.unity.modules.unitywebrequest": "1.0.0",
++    "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
++    "com.unity.modules.unitywebrequestaudio": "1.0.0",
++    "com.unity.modules.unitywebrequesttexture": "1.0.0",
++    "com.unity.modules.unitywebrequestwww": "1.0.0",
++    "com.unity.modules.vehicles": "1.0.0",
++    "com.unity.modules.video": "1.0.0",
++    "com.unity.modules.vr": "1.0.0",
++    "com.unity.modules.wind": "1.0.0",
++    "com.unity.modules.xr": "1.0.0"
++  }
++}
+diff --git a/Packages/packages-lock.json b/Packages/packages-lock.json
+new file mode 100644
+index 0000000..baac831
+--- /dev/null
++++ b/Packages/packages-lock.json
+@@ -0,0 +1,401 @@
++{
++  "dependencies": {
++    "com.unity.burst": {
++      "version": "1.8.12",
++      "depth": 1,
++      "source": "registry",
++      "dependencies": {
++        "com.unity.mathematics": "1.2.1",
++        "com.unity.modules.jsonserialize": "1.0.0"
++      },
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.collab-proxy": {
++      "version": "2.2.0",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {},
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.ext.nunit": {
++      "version": "1.0.6",
++      "depth": 1,
++      "source": "registry",
++      "dependencies": {},
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.ide.rider": {
++      "version": "3.0.27",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {
++        "com.unity.ext.nunit": "1.0.6"
++      },
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.ide.visualstudio": {
++      "version": "2.0.22",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {
++        "com.unity.test-framework": "1.1.9"
++      },
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.ide.vscode": {
++      "version": "1.2.5",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {},
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.mathematics": {
++      "version": "1.2.6",
++      "depth": 1,
++      "source": "registry",
++      "dependencies": {},
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.render-pipelines.core": {
++      "version": "14.0.10",
++      "depth": 1,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.ugui": "1.0.0",
++        "com.unity.modules.physics": "1.0.0",
++        "com.unity.modules.terrain": "1.0.0",
++        "com.unity.modules.jsonserialize": "1.0.0"
++      }
++    },
++    "com.unity.render-pipelines.universal": {
++      "version": "14.0.10",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.mathematics": "1.2.1",
++        "com.unity.burst": "1.8.9",
++        "com.unity.render-pipelines.core": "14.0.10",
++        "com.unity.shadergraph": "14.0.10",
++        "com.unity.render-pipelines.universal-config": "14.0.9"
++      }
++    },
++    "com.unity.render-pipelines.universal-config": {
++      "version": "14.0.9",
++      "depth": 1,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.render-pipelines.core": "14.0.9"
++      }
++    },
++    "com.unity.searcher": {
++      "version": "4.9.2",
++      "depth": 2,
++      "source": "registry",
++      "dependencies": {},
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.shadergraph": {
++      "version": "14.0.10",
++      "depth": 1,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.render-pipelines.core": "14.0.10",
++        "com.unity.searcher": "4.9.2"
++      }
++    },
++    "com.unity.test-framework": {
++      "version": "1.1.33",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {
++        "com.unity.ext.nunit": "1.0.6",
++        "com.unity.modules.imgui": "1.0.0",
++        "com.unity.modules.jsonserialize": "1.0.0"
++      },
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.textmeshpro": {
++      "version": "3.0.6",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {
++        "com.unity.ugui": "1.0.0"
++      },
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.timeline": {
++      "version": "1.7.6",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {
++        "com.unity.modules.director": "1.0.0",
++        "com.unity.modules.animation": "1.0.0",
++        "com.unity.modules.audio": "1.0.0",
++        "com.unity.modules.particlesystem": "1.0.0"
++      },
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.ugui": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.ui": "1.0.0",
++        "com.unity.modules.imgui": "1.0.0"
++      }
++    },
++    "com.unity.visualscripting": {
++      "version": "1.9.1",
++      "depth": 0,
++      "source": "registry",
++      "dependencies": {
++        "com.unity.ugui": "1.0.0",
++        "com.unity.modules.jsonserialize": "1.0.0"
++      },
++      "url": "https://packages.unity.com"
++    },
++    "com.unity.modules.ai": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.androidjni": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.animation": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.assetbundle": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.audio": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.cloth": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.physics": "1.0.0"
++      }
++    },
++    "com.unity.modules.director": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.audio": "1.0.0",
++        "com.unity.modules.animation": "1.0.0"
++      }
++    },
++    "com.unity.modules.imageconversion": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.imgui": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.jsonserialize": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.particlesystem": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.physics": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.physics2d": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.screencapture": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.imageconversion": "1.0.0"
++      }
++    },
++    "com.unity.modules.subsystems": {
++      "version": "1.0.0",
++      "depth": 1,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.jsonserialize": "1.0.0"
++      }
++    },
++    "com.unity.modules.terrain": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.terrainphysics": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.physics": "1.0.0",
++        "com.unity.modules.terrain": "1.0.0"
++      }
++    },
++    "com.unity.modules.tilemap": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.physics2d": "1.0.0"
++      }
++    },
++    "com.unity.modules.ui": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.uielements": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.ui": "1.0.0",
++        "com.unity.modules.imgui": "1.0.0",
++        "com.unity.modules.jsonserialize": "1.0.0"
++      }
++    },
++    "com.unity.modules.umbra": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.unityanalytics": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.unitywebrequest": "1.0.0",
++        "com.unity.modules.jsonserialize": "1.0.0"
++      }
++    },
++    "com.unity.modules.unitywebrequest": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.unitywebrequestassetbundle": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.assetbundle": "1.0.0",
++        "com.unity.modules.unitywebrequest": "1.0.0"
++      }
++    },
++    "com.unity.modules.unitywebrequestaudio": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.unitywebrequest": "1.0.0",
++        "com.unity.modules.audio": "1.0.0"
++      }
++    },
++    "com.unity.modules.unitywebrequesttexture": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.unitywebrequest": "1.0.0",
++        "com.unity.modules.imageconversion": "1.0.0"
++      }
++    },
++    "com.unity.modules.unitywebrequestwww": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.unitywebrequest": "1.0.0",
++        "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
++        "com.unity.modules.unitywebrequestaudio": "1.0.0",
++        "com.unity.modules.audio": "1.0.0",
++        "com.unity.modules.assetbundle": "1.0.0",
++        "com.unity.modules.imageconversion": "1.0.0"
++      }
++    },
++    "com.unity.modules.vehicles": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.physics": "1.0.0"
++      }
++    },
++    "com.unity.modules.video": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.audio": "1.0.0",
++        "com.unity.modules.ui": "1.0.0",
++        "com.unity.modules.unitywebrequest": "1.0.0"
++      }
++    },
++    "com.unity.modules.vr": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.jsonserialize": "1.0.0",
++        "com.unity.modules.physics": "1.0.0",
++        "com.unity.modules.xr": "1.0.0"
++      }
++    },
++    "com.unity.modules.wind": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {}
++    },
++    "com.unity.modules.xr": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.physics": "1.0.0",
++        "com.unity.modules.jsonserialize": "1.0.0",
++        "com.unity.modules.subsystems": "1.0.0"
++      }
++    }
++  }
++}
+diff --git a/ProjectSettings/AudioManager.asset b/ProjectSettings/AudioManager.asset
+new file mode 100644
+index 0000000..27287fe
+--- /dev/null
++++ b/ProjectSettings/AudioManager.asset
+@@ -0,0 +1,19 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!11 &1
++AudioManager:
++  m_ObjectHideFlags: 0
++  serializedVersion: 2
++  m_Volume: 1
++  Rolloff Scale: 1
++  Doppler Factor: 1
++  Default Speaker Mode: 2
++  m_SampleRate: 0
++  m_DSPBufferSize: 1024
++  m_VirtualVoiceCount: 512
++  m_RealVoiceCount: 32
++  m_SpatializerPlugin: 
++  m_AmbisonicDecoderPlugin: 
++  m_DisableAudio: 0
++  m_VirtualizeEffects: 1
++  m_RequestedDSPBufferSize: 0
+diff --git a/ProjectSettings/BurstAotSettings_StandaloneWindows.json b/ProjectSettings/BurstAotSettings_StandaloneWindows.json
+new file mode 100644
+index 0000000..2144f6d
+--- /dev/null
++++ b/ProjectSettings/BurstAotSettings_StandaloneWindows.json
+@@ -0,0 +1,16 @@
++{
++  "MonoBehaviour": {
++    "Version": 3,
++    "EnableBurstCompilation": true,
++    "EnableOptimisations": true,
++    "EnableSafetyChecks": false,
++    "EnableDebugInAllBuilds": false,
++    "UsePlatformSDKLinker": false,
++    "CpuMinTargetX32": 0,
++    "CpuMaxTargetX32": 0,
++    "CpuMinTargetX64": 0,
++    "CpuMaxTargetX64": 0,
++    "CpuTargetsX32": 6,
++    "CpuTargetsX64": 72
++  }
++}
+diff --git a/ProjectSettings/ClusterInputManager.asset b/ProjectSettings/ClusterInputManager.asset
+new file mode 100644
+index 0000000..e7886b2
+--- /dev/null
++++ b/ProjectSettings/ClusterInputManager.asset
+@@ -0,0 +1,6 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!236 &1
++ClusterInputManager:
++  m_ObjectHideFlags: 0
++  m_Inputs: []
+diff --git a/ProjectSettings/CommonBurstAotSettings.json b/ProjectSettings/CommonBurstAotSettings.json
+new file mode 100644
+index 0000000..3dffdba
+--- /dev/null
++++ b/ProjectSettings/CommonBurstAotSettings.json
+@@ -0,0 +1,6 @@
++{
++  "MonoBehaviour": {
++    "Version": 3,
++    "DisabledWarnings": ""
++  }
++}
+diff --git a/ProjectSettings/DynamicsManager.asset b/ProjectSettings/DynamicsManager.asset
+new file mode 100644
+index 0000000..1596c42
+--- /dev/null
++++ b/ProjectSettings/DynamicsManager.asset
+@@ -0,0 +1,36 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!55 &1
++PhysicsManager:
++  m_ObjectHideFlags: 0
++  serializedVersion: 13
++  m_Gravity: {x: 0, y: -9.81, z: 0}
++  m_DefaultMaterial: {fileID: 0}
++  m_BounceThreshold: 2
++  m_SleepThreshold: 0.005
++  m_DefaultContactOffset: 0.01
++  m_DefaultSolverIterations: 6
++  m_DefaultSolverVelocityIterations: 1
++  m_QueriesHitBackfaces: 0
++  m_QueriesHitTriggers: 1
++  m_EnableAdaptiveForce: 0
++  m_ClothInterCollisionDistance: 0.1
++  m_ClothInterCollisionStiffness: 0.2
++  m_ContactsGeneration: 1
++  m_LayerCollisionMatrix: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
++  m_AutoSimulation: 1
++  m_AutoSyncTransforms: 0
++  m_ReuseCollisionCallbacks: 0
++  m_ClothInterCollisionSettingsToggle: 0
++  m_ClothGravity: {x: 0, y: -9.81, z: 0}
++  m_ContactPairsMode: 0
++  m_BroadphaseType: 0
++  m_WorldBounds:
++    m_Center: {x: 0, y: 0, z: 0}
++    m_Extent: {x: 250, y: 250, z: 250}
++  m_WorldSubdivisions: 8
++  m_FrictionType: 0
++  m_EnableEnhancedDeterminism: 0
++  m_EnableUnifiedHeightmaps: 1
++  m_SolverType: 0
++  m_DefaultMaxAngularSpeed: 50
+diff --git a/ProjectSettings/EditorBuildSettings.asset b/ProjectSettings/EditorBuildSettings.asset
+new file mode 100644
+index 0000000..4f6d0c1
+--- /dev/null
++++ b/ProjectSettings/EditorBuildSettings.asset
+@@ -0,0 +1,14 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!1045 &1
++EditorBuildSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 2
++  m_Scenes:
++  - enabled: 0
++    path: Assets/Scenes/SampleScene.unity
++    guid: 99c9720ab356a0642a771bea13969a05
++  - enabled: 1
++    path: Assets/Scenes/MainScene.unity
++    guid: 46589c68552c2524ba4da2fc8b2c23a8
++  m_configObjects: {}
+diff --git a/ProjectSettings/EditorSettings.asset b/ProjectSettings/EditorSettings.asset
+new file mode 100644
+index 0000000..c8da44e
+--- /dev/null
++++ b/ProjectSettings/EditorSettings.asset
+@@ -0,0 +1,35 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!159 &1
++EditorSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 9
++  m_ExternalVersionControlSupport: Visible Meta Files
++  m_SerializationMode: 2
++  m_LineEndingsForNewScripts: 2
++  m_DefaultBehaviorMode: 0
++  m_PrefabRegularEnvironment: {fileID: 0}
++  m_PrefabUIEnvironment: {fileID: 0}
++  m_SpritePackerMode: 0
++  m_SpritePackerPaddingPower: 1
++  m_EtcTextureCompressorBehavior: 1
++  m_EtcTextureFastCompressor: 1
++  m_EtcTextureNormalCompressor: 2
++  m_EtcTextureBestCompressor: 4
++  m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef;asmref;rsp
++  m_ProjectGenerationRootNamespace: 
++  m_CollabEditorSettings:
++    inProgressEnabled: 1
++  m_EnableTextureStreamingInEditMode: 1
++  m_EnableTextureStreamingInPlayMode: 1
++  m_AsyncShaderCompilation: 1
++  m_EnterPlayModeOptionsEnabled: 0
++  m_EnterPlayModeOptions: 3
++  m_ShowLightmapResolutionOverlay: 1
++  m_UseLegacyProbeSampleCount: 0
++  m_AssetPipelineMode: 1
++  m_CacheServerMode: 0
++  m_CacheServerEndpoint: 
++  m_CacheServerNamespacePrefix: default
++  m_CacheServerEnableDownload: 1
++  m_CacheServerEnableUpload: 1
+diff --git a/ProjectSettings/GraphicsSettings.asset b/ProjectSettings/GraphicsSettings.asset
+new file mode 100644
+index 0000000..56859a2
+--- /dev/null
++++ b/ProjectSettings/GraphicsSettings.asset
+@@ -0,0 +1,70 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!30 &1
++GraphicsSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 14
++  m_Deferred:
++    m_Mode: 1
++    m_Shader: {fileID: 69, guid: 0000000000000000f000000000000000, type: 0}
++  m_DeferredReflections:
++    m_Mode: 1
++    m_Shader: {fileID: 74, guid: 0000000000000000f000000000000000, type: 0}
++  m_ScreenSpaceShadows:
++    m_Mode: 1
++    m_Shader: {fileID: 64, guid: 0000000000000000f000000000000000, type: 0}
++  m_LegacyDeferred:
++    m_Mode: 1
++    m_Shader: {fileID: 63, guid: 0000000000000000f000000000000000, type: 0}
++  m_DepthNormals:
++    m_Mode: 1
++    m_Shader: {fileID: 62, guid: 0000000000000000f000000000000000, type: 0}
++  m_MotionVectors:
++    m_Mode: 1
++    m_Shader: {fileID: 75, guid: 0000000000000000f000000000000000, type: 0}
++  m_LightHalo:
++    m_Mode: 1
++    m_Shader: {fileID: 105, guid: 0000000000000000f000000000000000, type: 0}
++  m_LensFlare:
++    m_Mode: 1
++    m_Shader: {fileID: 102, guid: 0000000000000000f000000000000000, type: 0}
++  m_VideoShadersIncludeMode: 2
++  m_AlwaysIncludedShaders:
++  - {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
++  - {fileID: 15104, guid: 0000000000000000f000000000000000, type: 0}
++  - {fileID: 15105, guid: 0000000000000000f000000000000000, type: 0}
++  - {fileID: 15106, guid: 0000000000000000f000000000000000, type: 0}
++  - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
++  - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
++  - {fileID: 10783, guid: 0000000000000000f000000000000000, type: 0}
++  m_PreloadedShaders: []
++  m_PreloadShadersBatchTimeLimit: -1
++  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
++    type: 0}
++  m_CustomRenderPipeline: {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd,
++    type: 2}
++  m_TransparencySortMode: 0
++  m_TransparencySortAxis: {x: 0, y: 0, z: 1}
++  m_DefaultRenderingPath: 1
++  m_DefaultMobileRenderingPath: 1
++  m_TierSettings: []
++  m_LightmapStripping: 0
++  m_FogStripping: 0
++  m_InstancingStripping: 0
++  m_LightmapKeepPlain: 1
++  m_LightmapKeepDirCombined: 1
++  m_LightmapKeepDynamicPlain: 1
++  m_LightmapKeepDynamicDirCombined: 1
++  m_LightmapKeepShadowMask: 1
++  m_LightmapKeepSubtractive: 1
++  m_FogKeepLinear: 1
++  m_FogKeepExp: 1
++  m_FogKeepExp2: 1
++  m_AlbedoSwatchInfos: []
++  m_LightsUseLinearIntensity: 1
++  m_LightsUseColorTemperature: 1
++  m_DefaultRenderingLayerMask: 1
++  m_LogWhenShaderIsCompiled: 0
++  m_SRPDefaultSettings:
++    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 18dc0cd2c080841dea60987a38ce93fa,
++      type: 2}
+diff --git a/ProjectSettings/InputManager.asset b/ProjectSettings/InputManager.asset
+new file mode 100644
+index 0000000..b16147e
+--- /dev/null
++++ b/ProjectSettings/InputManager.asset
+@@ -0,0 +1,487 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!13 &1
++InputManager:
++  m_ObjectHideFlags: 0
++  serializedVersion: 2
++  m_Axes:
++  - serializedVersion: 3
++    m_Name: Horizontal
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: left
++    positiveButton: right
++    altNegativeButton: a
++    altPositiveButton: d
++    gravity: 3
++    dead: 0.001
++    sensitivity: 3
++    snap: 1
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Vertical
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: down
++    positiveButton: up
++    altNegativeButton: s
++    altPositiveButton: w
++    gravity: 3
++    dead: 0.001
++    sensitivity: 3
++    snap: 1
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Fire1
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: left ctrl
++    altNegativeButton: 
++    altPositiveButton: mouse 0
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Fire2
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: left alt
++    altNegativeButton: 
++    altPositiveButton: mouse 1
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Fire3
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: left shift
++    altNegativeButton: 
++    altPositiveButton: mouse 2
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Jump
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: space
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Mouse X
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: 
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 0
++    dead: 0
++    sensitivity: 0.1
++    snap: 0
++    invert: 0
++    type: 1
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Mouse Y
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: 
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 0
++    dead: 0
++    sensitivity: 0.1
++    snap: 0
++    invert: 0
++    type: 1
++    axis: 1
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Mouse ScrollWheel
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: 
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 0
++    dead: 0
++    sensitivity: 0.1
++    snap: 0
++    invert: 0
++    type: 1
++    axis: 2
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Horizontal
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: 
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 0
++    dead: 0.19
++    sensitivity: 1
++    snap: 0
++    invert: 0
++    type: 2
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Vertical
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: 
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 0
++    dead: 0.19
++    sensitivity: 1
++    snap: 0
++    invert: 1
++    type: 2
++    axis: 1
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Fire1
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: joystick button 0
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Fire2
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: joystick button 1
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Fire3
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: joystick button 2
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Jump
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: joystick button 3
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Submit
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: return
++    altNegativeButton: 
++    altPositiveButton: joystick button 0
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Submit
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: enter
++    altNegativeButton: 
++    altPositiveButton: space
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Cancel
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: escape
++    altNegativeButton: 
++    altPositiveButton: joystick button 1
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Enable Debug Button 1
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: left ctrl
++    altNegativeButton: 
++    altPositiveButton: joystick button 8
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Enable Debug Button 2
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: backspace
++    altNegativeButton: 
++    altPositiveButton: joystick button 9
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Reset
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: left alt
++    altNegativeButton: 
++    altPositiveButton: joystick button 1
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Next
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: page down
++    altNegativeButton: 
++    altPositiveButton: joystick button 5
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Previous
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: page up
++    altNegativeButton: 
++    altPositiveButton: joystick button 4
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Validate
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: return
++    altNegativeButton: 
++    altPositiveButton: joystick button 0
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Persistent
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: right shift
++    altNegativeButton: 
++    altPositiveButton: joystick button 2
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Multiplier
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: 
++    positiveButton: left shift
++    altNegativeButton: 
++    altPositiveButton: joystick button 3
++    gravity: 0
++    dead: 0
++    sensitivity: 0
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Horizontal
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: left
++    positiveButton: right
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Vertical
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: down
++    positiveButton: up
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 0
++    axis: 0
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Vertical
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: down
++    positiveButton: up
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 2
++    axis: 6
++    joyNum: 0
++  - serializedVersion: 3
++    m_Name: Debug Horizontal
++    descriptiveName: 
++    descriptiveNegativeName: 
++    negativeButton: left
++    positiveButton: right
++    altNegativeButton: 
++    altPositiveButton: 
++    gravity: 1000
++    dead: 0.001
++    sensitivity: 1000
++    snap: 0
++    invert: 0
++    type: 2
++    axis: 5
++    joyNum: 0
+diff --git a/ProjectSettings/MemorySettings.asset b/ProjectSettings/MemorySettings.asset
+new file mode 100644
+index 0000000..5b5face
+--- /dev/null
++++ b/ProjectSettings/MemorySettings.asset
+@@ -0,0 +1,35 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!387306366 &1
++MemorySettings:
++  m_ObjectHideFlags: 0
++  m_EditorMemorySettings:
++    m_MainAllocatorBlockSize: -1
++    m_ThreadAllocatorBlockSize: -1
++    m_MainGfxBlockSize: -1
++    m_ThreadGfxBlockSize: -1
++    m_CacheBlockSize: -1
++    m_TypetreeBlockSize: -1
++    m_ProfilerBlockSize: -1
++    m_ProfilerEditorBlockSize: -1
++    m_BucketAllocatorGranularity: -1
++    m_BucketAllocatorBucketsCount: -1
++    m_BucketAllocatorBlockSize: -1
++    m_BucketAllocatorBlockCount: -1
++    m_ProfilerBucketAllocatorGranularity: -1
++    m_ProfilerBucketAllocatorBucketsCount: -1
++    m_ProfilerBucketAllocatorBlockSize: -1
++    m_ProfilerBucketAllocatorBlockCount: -1
++    m_TempAllocatorSizeMain: -1
++    m_JobTempAllocatorBlockSize: -1
++    m_BackgroundJobTempAllocatorBlockSize: -1
++    m_JobTempAllocatorReducedBlockSize: -1
++    m_TempAllocatorSizeGIBakingWorker: -1
++    m_TempAllocatorSizeNavMeshWorker: -1
++    m_TempAllocatorSizeAudioWorker: -1
++    m_TempAllocatorSizeCloudWorker: -1
++    m_TempAllocatorSizeGfx: -1
++    m_TempAllocatorSizeJobWorker: -1
++    m_TempAllocatorSizeBackgroundWorker: -1
++    m_TempAllocatorSizePreloadManager: -1
++  m_PlatformMemorySettings: {}
+diff --git a/ProjectSettings/NavMeshAreas.asset b/ProjectSettings/NavMeshAreas.asset
+new file mode 100644
+index 0000000..3b0b7c3
+--- /dev/null
++++ b/ProjectSettings/NavMeshAreas.asset
+@@ -0,0 +1,91 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!126 &1
++NavMeshProjectSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 2
++  areas:
++  - name: Walkable
++    cost: 1
++  - name: Not Walkable
++    cost: 1
++  - name: Jump
++    cost: 2
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  - name: 
++    cost: 1
++  m_LastAgentTypeID: -887442657
++  m_Settings:
++  - serializedVersion: 2
++    agentTypeID: 0
++    agentRadius: 0.5
++    agentHeight: 2
++    agentSlope: 45
++    agentClimb: 0.75
++    ledgeDropHeight: 0
++    maxJumpAcrossDistance: 0
++    minRegionArea: 2
++    manualCellSize: 0
++    cellSize: 0.16666667
++    manualTileSize: 0
++    tileSize: 256
++    accuratePlacement: 0
++    debug:
++      m_Flags: 0
++  m_SettingNames:
++  - Humanoid
+diff --git a/ProjectSettings/PackageManagerSettings.asset b/ProjectSettings/PackageManagerSettings.asset
+new file mode 100644
+index 0000000..be4a797
+--- /dev/null
++++ b/ProjectSettings/PackageManagerSettings.asset
+@@ -0,0 +1,43 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &1
++MonoBehaviour:
++  m_ObjectHideFlags: 61
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 13964, guid: 0000000000000000e000000000000000, type: 0}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_EnablePreviewPackages: 0
++  m_EnablePackageDependencies: 0
++  m_AdvancedSettingsExpanded: 1
++  m_ScopedRegistriesSettingsExpanded: 1
++  oneTimeWarningShown: 0
++  m_Registries:
++  - m_Id: main
++    m_Name: 
++    m_Url: https://packages.unity.com
++    m_Scopes: []
++    m_IsDefault: 1
++    m_Capabilities: 7
++  m_UserSelectedRegistryName: 
++  m_UserAddingNewScopedRegistry: 0
++  m_RegistryInfoDraft:
++    m_ErrorMessage: 
++    m_Original:
++      m_Id: 
++      m_Name: 
++      m_Url: 
++      m_Scopes: []
++      m_IsDefault: 0
++      m_Capabilities: 0
++    m_Modified: 0
++    m_Name: 
++    m_Url: 
++    m_Scopes:
++    - 
++    m_SelectedScopeIndex: 0
+diff --git a/ProjectSettings/Physics2DSettings.asset b/ProjectSettings/Physics2DSettings.asset
+new file mode 100644
+index 0000000..6c5cf8a
+--- /dev/null
++++ b/ProjectSettings/Physics2DSettings.asset
+@@ -0,0 +1,56 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!19 &1
++Physics2DSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 4
++  m_Gravity: {x: 0, y: -9.81}
++  m_DefaultMaterial: {fileID: 0}
++  m_VelocityIterations: 8
++  m_PositionIterations: 3
++  m_VelocityThreshold: 1
++  m_MaxLinearCorrection: 0.2
++  m_MaxAngularCorrection: 8
++  m_MaxTranslationSpeed: 100
++  m_MaxRotationSpeed: 360
++  m_BaumgarteScale: 0.2
++  m_BaumgarteTimeOfImpactScale: 0.75
++  m_TimeToSleep: 0.5
++  m_LinearSleepTolerance: 0.01
++  m_AngularSleepTolerance: 2
++  m_DefaultContactOffset: 0.01
++  m_JobOptions:
++    serializedVersion: 2
++    useMultithreading: 0
++    useConsistencySorting: 0
++    m_InterpolationPosesPerJob: 100
++    m_NewContactsPerJob: 30
++    m_CollideContactsPerJob: 100
++    m_ClearFlagsPerJob: 200
++    m_ClearBodyForcesPerJob: 200
++    m_SyncDiscreteFixturesPerJob: 50
++    m_SyncContinuousFixturesPerJob: 50
++    m_FindNearestContactsPerJob: 100
++    m_UpdateTriggerContactsPerJob: 100
++    m_IslandSolverCostThreshold: 100
++    m_IslandSolverBodyCostScale: 1
++    m_IslandSolverContactCostScale: 10
++    m_IslandSolverJointCostScale: 10
++    m_IslandSolverBodiesPerJob: 50
++    m_IslandSolverContactsPerJob: 50
++  m_AutoSimulation: 1
++  m_QueriesHitTriggers: 1
++  m_QueriesStartInColliders: 1
++  m_CallbacksOnDisable: 1
++  m_ReuseCollisionCallbacks: 0
++  m_AutoSyncTransforms: 0
++  m_AlwaysShowColliders: 0
++  m_ShowColliderSleep: 1
++  m_ShowColliderContacts: 0
++  m_ShowColliderAABB: 0
++  m_ContactArrowScale: 0.2
++  m_ColliderAwakeColor: {r: 0.5686275, g: 0.95686275, b: 0.54509807, a: 0.7529412}
++  m_ColliderAsleepColor: {r: 0.5686275, g: 0.95686275, b: 0.54509807, a: 0.36078432}
++  m_ColliderContactColor: {r: 1, g: 0, b: 1, a: 0.6862745}
++  m_ColliderAABBColor: {r: 1, g: 1, b: 0, a: 0.2509804}
++  m_LayerCollisionMatrix: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+diff --git a/ProjectSettings/PresetManager.asset b/ProjectSettings/PresetManager.asset
+new file mode 100644
+index 0000000..67a94da
+--- /dev/null
++++ b/ProjectSettings/PresetManager.asset
+@@ -0,0 +1,7 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!1386491679 &1
++PresetManager:
++  m_ObjectHideFlags: 0
++  serializedVersion: 2
++  m_DefaultPresets: {}
+diff --git a/ProjectSettings/ProjectSettings.asset b/ProjectSettings/ProjectSettings.asset
+new file mode 100644
+index 0000000..9806856
+--- /dev/null
++++ b/ProjectSettings/ProjectSettings.asset
+@@ -0,0 +1,926 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!129 &1
++PlayerSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 26
++  productGUID: f04d6d04fa1c46f4297245f5254e9482
++  AndroidProfiler: 0
++  AndroidFilterTouchesWhenObscured: 0
++  AndroidEnableSustainedPerformanceMode: 0
++  defaultScreenOrientation: 4
++  targetDevice: 2
++  useOnDemandResources: 0
++  accelerometerFrequency: 60
++  companyName: DefaultCompany
++  productName: Picker3D
++  defaultCursor: {fileID: 0}
++  cursorHotspot: {x: 0, y: 0}
++  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
++  m_ShowUnitySplashScreen: 1
++  m_ShowUnitySplashLogo: 1
++  m_SplashScreenOverlayOpacity: 1
++  m_SplashScreenAnimation: 1
++  m_SplashScreenLogoStyle: 1
++  m_SplashScreenDrawMode: 0
++  m_SplashScreenBackgroundAnimationZoom: 1
++  m_SplashScreenLogoAnimationZoom: 1
++  m_SplashScreenBackgroundLandscapeAspect: 1
++  m_SplashScreenBackgroundPortraitAspect: 1
++  m_SplashScreenBackgroundLandscapeUvs:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++  m_SplashScreenBackgroundPortraitUvs:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++  m_SplashScreenLogos: []
++  m_VirtualRealitySplashScreen: {fileID: 0}
++  m_HolographicTrackingLossScreen: {fileID: 0}
++  defaultScreenWidth: 1024
++  defaultScreenHeight: 768
++  defaultScreenWidthWeb: 960
++  defaultScreenHeightWeb: 600
++  m_StereoRenderingPath: 0
++  m_ActiveColorSpace: 1
++  unsupportedMSAAFallback: 0
++  m_SpriteBatchVertexThreshold: 300
++  m_MTRendering: 1
++  mipStripping: 0
++  numberOfMipsStripped: 0
++  numberOfMipsStrippedPerMipmapLimitGroup: {}
++  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
++  iosShowActivityIndicatorOnLoading: -1
++  androidShowActivityIndicatorOnLoading: -1
++  iosUseCustomAppBackgroundBehavior: 0
++  allowedAutorotateToPortrait: 1
++  allowedAutorotateToPortraitUpsideDown: 1
++  allowedAutorotateToLandscapeRight: 1
++  allowedAutorotateToLandscapeLeft: 1
++  useOSAutorotation: 1
++  use32BitDisplayBuffer: 1
++  preserveFramebufferAlpha: 0
++  disableDepthAndStencilBuffers: 0
++  androidStartInFullscreen: 1
++  androidRenderOutsideSafeArea: 1
++  androidUseSwappy: 0
++  androidBlitType: 0
++  androidResizableWindow: 0
++  androidDefaultWindowWidth: 1920
++  androidDefaultWindowHeight: 1080
++  androidMinimumWindowWidth: 400
++  androidMinimumWindowHeight: 300
++  androidFullscreenMode: 1
++  androidAutoRotationBehavior: 1
++  defaultIsNativeResolution: 1
++  macRetinaSupport: 1
++  runInBackground: 0
++  captureSingleScreen: 0
++  muteOtherAudioSources: 0
++  Prepare IOS For Recording: 0
++  Force IOS Speakers When Recording: 0
++  deferSystemGesturesMode: 0
++  hideHomeButton: 0
++  submitAnalytics: 1
++  usePlayerLog: 1
++  dedicatedServerOptimizations: 0
++  bakeCollisionMeshes: 0
++  forceSingleInstance: 0
++  useFlipModelSwapchain: 1
++  resizableWindow: 0
++  useMacAppStoreValidation: 0
++  macAppStoreCategory: public.app-category.games
++  gpuSkinning: 1
++  xboxPIXTextureCapture: 0
++  xboxEnableAvatar: 0
++  xboxEnableKinect: 0
++  xboxEnableKinectAutoTracking: 0
++  xboxEnableFitness: 0
++  visibleInBackground: 1
++  allowFullscreenSwitch: 1
++  fullscreenMode: 1
++  xboxSpeechDB: 0
++  xboxEnableHeadOrientation: 0
++  xboxEnableGuest: 0
++  xboxEnablePIXSampling: 0
++  metalFramebufferOnly: 0
++  xboxOneResolution: 0
++  xboxOneSResolution: 0
++  xboxOneXResolution: 3
++  xboxOneMonoLoggingLevel: 0
++  xboxOneLoggingLevel: 1
++  xboxOneDisableEsram: 0
++  xboxOneEnableTypeOptimization: 0
++  xboxOnePresentImmediateThreshold: 0
++  switchQueueCommandMemory: 1048576
++  switchQueueControlMemory: 16384
++  switchQueueComputeMemory: 262144
++  switchNVNShaderPoolsGranularity: 33554432
++  switchNVNDefaultPoolsGranularity: 16777216
++  switchNVNOtherPoolsGranularity: 16777216
++  switchGpuScratchPoolGranularity: 2097152
++  switchAllowGpuScratchShrinking: 0
++  switchNVNMaxPublicTextureIDCount: 0
++  switchNVNMaxPublicSamplerIDCount: 0
++  switchNVNGraphicsFirmwareMemory: 32
++  switchMaxWorkerMultiple: 8
++  stadiaPresentMode: 0
++  stadiaTargetFramerate: 0
++  vulkanNumSwapchainBuffers: 3
++  vulkanEnableSetSRGBWrite: 0
++  vulkanEnablePreTransform: 1
++  vulkanEnableLateAcquireNextImage: 0
++  vulkanEnableCommandBufferRecycling: 1
++  loadStoreDebugModeEnabled: 0
++  visionOSBundleVersion: 1.0
++  tvOSBundleVersion: 1.0
++  bundleVersion: 0.1.0
++  preloadedAssets: []
++  metroInputSource: 0
++  wsaTransparentSwapchain: 0
++  m_HolographicPauseOnTrackingLoss: 1
++  xboxOneDisableKinectGpuReservation: 1
++  xboxOneEnable7thCore: 1
++  vrSettings:
++    enable360StereoCapture: 0
++  isWsaHolographicRemotingEnabled: 0
++  enableFrameTimingStats: 0
++  enableOpenGLProfilerGPURecorders: 1
++  allowHDRDisplaySupport: 0
++  useHDRDisplay: 0
++  hdrBitDepth: 0
++  m_ColorGamuts: 00000000
++  targetPixelDensity: 30
++  resolutionScalingMode: 0
++  resetResolutionOnWindowResize: 0
++  androidSupportedAspectRatio: 1
++  androidMaxAspectRatio: 2.1
++  applicationIdentifier:
++    Android: com.UnityTechnologies.com.unity.template.urpblank
++    Standalone: com.Unity-Technologies.com.unity.template.urp-blank
++    iPhone: com.Unity-Technologies.com.unity.template.urp-blank
++  buildNumber:
++    Standalone: 0
++    VisionOS: 0
++    iPhone: 0
++    tvOS: 0
++  overrideDefaultApplicationIdentifier: 1
++  AndroidBundleVersionCode: 1
++  AndroidMinSdkVersion: 22
++  AndroidTargetSdkVersion: 0
++  AndroidPreferredInstallLocation: 1
++  aotOptions: 
++  stripEngineCode: 1
++  iPhoneStrippingLevel: 0
++  iPhoneScriptCallOptimization: 0
++  ForceInternetPermission: 0
++  ForceSDCardPermission: 0
++  CreateWallpaper: 0
++  APKExpansionFiles: 0
++  keepLoadedShadersAlive: 0
++  StripUnusedMeshComponents: 0
++  strictShaderVariantMatching: 0
++  VertexChannelCompressionMask: 4054
++  iPhoneSdkVersion: 988
++  iOSTargetOSVersionString: 12.0
++  tvOSSdkVersion: 0
++  tvOSRequireExtendedGameController: 0
++  tvOSTargetOSVersionString: 12.0
++  VisionOSSdkVersion: 0
++  VisionOSTargetOSVersionString: 1.0
++  uIPrerenderedIcon: 0
++  uIRequiresPersistentWiFi: 0
++  uIRequiresFullScreen: 1
++  uIStatusBarHidden: 1
++  uIExitOnSuspend: 0
++  uIStatusBarStyle: 0
++  appleTVSplashScreen: {fileID: 0}
++  appleTVSplashScreen2x: {fileID: 0}
++  tvOSSmallIconLayers: []
++  tvOSSmallIconLayers2x: []
++  tvOSLargeIconLayers: []
++  tvOSLargeIconLayers2x: []
++  tvOSTopShelfImageLayers: []
++  tvOSTopShelfImageLayers2x: []
++  tvOSTopShelfImageWideLayers: []
++  tvOSTopShelfImageWideLayers2x: []
++  iOSLaunchScreenType: 0
++  iOSLaunchScreenPortrait: {fileID: 0}
++  iOSLaunchScreenLandscape: {fileID: 0}
++  iOSLaunchScreenBackgroundColor:
++    serializedVersion: 2
++    rgba: 0
++  iOSLaunchScreenFillPct: 100
++  iOSLaunchScreenSize: 100
++  iOSLaunchScreenCustomXibPath: 
++  iOSLaunchScreeniPadType: 0
++  iOSLaunchScreeniPadImage: {fileID: 0}
++  iOSLaunchScreeniPadBackgroundColor:
++    serializedVersion: 2
++    rgba: 0
++  iOSLaunchScreeniPadFillPct: 100
++  iOSLaunchScreeniPadSize: 100
++  iOSLaunchScreeniPadCustomXibPath: 
++  iOSLaunchScreenCustomStoryboardPath: 
++  iOSLaunchScreeniPadCustomStoryboardPath: 
++  iOSDeviceRequirements: []
++  iOSURLSchemes: []
++  macOSURLSchemes: []
++  iOSBackgroundModes: 0
++  iOSMetalForceHardShadows: 0
++  metalEditorSupport: 1
++  metalAPIValidation: 1
++  iOSRenderExtraFrameOnPause: 0
++  iosCopyPluginsCodeInsteadOfSymlink: 0
++  appleDeveloperTeamID: 
++  iOSManualSigningProvisioningProfileID: 
++  tvOSManualSigningProvisioningProfileID: 
++  VisionOSManualSigningProvisioningProfileID: 
++  iOSManualSigningProvisioningProfileType: 0
++  tvOSManualSigningProvisioningProfileType: 0
++  VisionOSManualSigningProvisioningProfileType: 0
++  appleEnableAutomaticSigning: 0
++  iOSRequireARKit: 0
++  iOSAutomaticallyDetectAndAddCapabilities: 1
++  appleEnableProMotion: 0
++  shaderPrecisionModel: 0
++  clonedFromGUID: 3c72c65a16f0acb438eed22b8b16c24a
++  templatePackageId: com.unity.template.urp-blank@3.0.2
++  templateDefaultScene: Assets/Scenes/SampleScene.unity
++  useCustomMainManifest: 0
++  useCustomLauncherManifest: 0
++  useCustomMainGradleTemplate: 0
++  useCustomLauncherGradleManifest: 0
++  useCustomBaseGradleTemplate: 0
++  useCustomGradlePropertiesTemplate: 0
++  useCustomGradleSettingsTemplate: 0
++  useCustomProguardFile: 0
++  AndroidTargetArchitectures: 1
++  AndroidTargetDevices: 0
++  AndroidSplashScreenScale: 0
++  androidSplashScreen: {fileID: 0}
++  AndroidKeystoreName: 
++  AndroidKeyaliasName: 
++  AndroidEnableArmv9SecurityFeatures: 0
++  AndroidBuildApkPerCpuArchitecture: 0
++  AndroidTVCompatibility: 0
++  AndroidIsGame: 1
++  AndroidEnableTango: 0
++  androidEnableBanner: 1
++  androidUseLowAccuracyLocation: 0
++  androidUseCustomKeystore: 0
++  m_AndroidBanners:
++  - width: 320
++    height: 180
++    banner: {fileID: 0}
++  androidGamepadSupportLevel: 0
++  chromeosInputEmulation: 1
++  AndroidMinifyRelease: 0
++  AndroidMinifyDebug: 0
++  AndroidValidateAppBundleSize: 1
++  AndroidAppBundleSizeToValidate: 150
++  m_BuildTargetIcons: []
++  m_BuildTargetPlatformIcons:
++  - m_BuildTarget: iPhone
++    m_Icons:
++    - m_Textures: []
++      m_Width: 180
++      m_Height: 180
++      m_Kind: 0
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 120
++      m_Height: 120
++      m_Kind: 0
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 167
++      m_Height: 167
++      m_Kind: 0
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 152
++      m_Height: 152
++      m_Kind: 0
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 76
++      m_Height: 76
++      m_Kind: 0
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 120
++      m_Height: 120
++      m_Kind: 3
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 80
++      m_Height: 80
++      m_Kind: 3
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 80
++      m_Height: 80
++      m_Kind: 3
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 40
++      m_Height: 40
++      m_Kind: 3
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 87
++      m_Height: 87
++      m_Kind: 1
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 58
++      m_Height: 58
++      m_Kind: 1
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 29
++      m_Height: 29
++      m_Kind: 1
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 58
++      m_Height: 58
++      m_Kind: 1
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 29
++      m_Height: 29
++      m_Kind: 1
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 60
++      m_Height: 60
++      m_Kind: 2
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 40
++      m_Height: 40
++      m_Kind: 2
++      m_SubKind: iPhone
++    - m_Textures: []
++      m_Width: 40
++      m_Height: 40
++      m_Kind: 2
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 20
++      m_Height: 20
++      m_Kind: 2
++      m_SubKind: iPad
++    - m_Textures: []
++      m_Width: 1024
++      m_Height: 1024
++      m_Kind: 4
++      m_SubKind: App Store
++  - m_BuildTarget: Android
++    m_Icons:
++    - m_Textures: []
++      m_Width: 432
++      m_Height: 432
++      m_Kind: 2
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 324
++      m_Height: 324
++      m_Kind: 2
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 216
++      m_Height: 216
++      m_Kind: 2
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 162
++      m_Height: 162
++      m_Kind: 2
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 108
++      m_Height: 108
++      m_Kind: 2
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 81
++      m_Height: 81
++      m_Kind: 2
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 192
++      m_Height: 192
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 144
++      m_Height: 144
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 96
++      m_Height: 96
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 72
++      m_Height: 72
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 48
++      m_Height: 48
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 36
++      m_Height: 36
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 192
++      m_Height: 192
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 144
++      m_Height: 144
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 96
++      m_Height: 96
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 72
++      m_Height: 72
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 48
++      m_Height: 48
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 36
++      m_Height: 36
++      m_Kind: 0
++      m_SubKind: 
++  - m_BuildTarget: tvOS
++    m_Icons:
++    - m_Textures: []
++      m_Width: 1280
++      m_Height: 768
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 800
++      m_Height: 480
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 400
++      m_Height: 240
++      m_Kind: 0
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 4640
++      m_Height: 1440
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 2320
++      m_Height: 720
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 3840
++      m_Height: 1440
++      m_Kind: 1
++      m_SubKind: 
++    - m_Textures: []
++      m_Width: 1920
++      m_Height: 720
++      m_Kind: 1
++      m_SubKind: 
++  m_BuildTargetBatching: []
++  m_BuildTargetShaderSettings: []
++  m_BuildTargetGraphicsJobs: []
++  m_BuildTargetGraphicsJobMode: []
++  m_BuildTargetGraphicsAPIs:
++  - m_BuildTarget: iOSSupport
++    m_APIs: 10000000
++    m_Automatic: 1
++  - m_BuildTarget: AndroidPlayer
++    m_APIs: 150000000b000000
++    m_Automatic: 0
++  m_BuildTargetVRSettings: []
++  m_DefaultShaderChunkSizeInMB: 16
++  m_DefaultShaderChunkCount: 0
++  openGLRequireES31: 0
++  openGLRequireES31AEP: 0
++  openGLRequireES32: 0
++  m_TemplateCustomTags: {}
++  mobileMTRendering:
++    Android: 1
++    iPhone: 1
++    tvOS: 1
++  m_BuildTargetGroupLightmapEncodingQuality:
++  - m_BuildTarget: Android
++    m_EncodingQuality: 1
++  m_BuildTargetGroupHDRCubemapEncodingQuality:
++  - m_BuildTarget: Android
++    m_EncodingQuality: 1
++  m_BuildTargetGroupLightmapSettings: []
++  m_BuildTargetGroupLoadStoreDebugModeSettings: []
++  m_BuildTargetNormalMapEncoding:
++  - m_BuildTarget: Android
++    m_Encoding: 1
++  m_BuildTargetDefaultTextureCompressionFormat:
++  - m_BuildTarget: Android
++    m_Format: 3
++  playModeTestRunnerEnabled: 0
++  runPlayModeTestAsEditModeTest: 0
++  actionOnDotNetUnhandledException: 1
++  enableInternalProfiler: 0
++  logObjCUncaughtExceptions: 1
++  enableCrashReportAPI: 0
++  cameraUsageDescription: 
++  locationUsageDescription: 
++  microphoneUsageDescription: 
++  bluetoothUsageDescription: 
++  macOSTargetOSVersion: 10.13.0
++  switchNMETAOverride: 
++  switchNetLibKey: 
++  switchSocketMemoryPoolSize: 6144
++  switchSocketAllocatorPoolSize: 128
++  switchSocketConcurrencyLimit: 14
++  switchScreenResolutionBehavior: 2
++  switchUseCPUProfiler: 0
++  switchEnableFileSystemTrace: 0
++  switchLTOSetting: 0
++  switchApplicationID: 0x01004b9000490000
++  switchNSODependencies: 
++  switchCompilerFlags: 
++  switchTitleNames_0: 
++  switchTitleNames_1: 
++  switchTitleNames_2: 
++  switchTitleNames_3: 
++  switchTitleNames_4: 
++  switchTitleNames_5: 
++  switchTitleNames_6: 
++  switchTitleNames_7: 
++  switchTitleNames_8: 
++  switchTitleNames_9: 
++  switchTitleNames_10: 
++  switchTitleNames_11: 
++  switchTitleNames_12: 
++  switchTitleNames_13: 
++  switchTitleNames_14: 
++  switchTitleNames_15: 
++  switchPublisherNames_0: 
++  switchPublisherNames_1: 
++  switchPublisherNames_2: 
++  switchPublisherNames_3: 
++  switchPublisherNames_4: 
++  switchPublisherNames_5: 
++  switchPublisherNames_6: 
++  switchPublisherNames_7: 
++  switchPublisherNames_8: 
++  switchPublisherNames_9: 
++  switchPublisherNames_10: 
++  switchPublisherNames_11: 
++  switchPublisherNames_12: 
++  switchPublisherNames_13: 
++  switchPublisherNames_14: 
++  switchPublisherNames_15: 
++  switchIcons_0: {fileID: 0}
++  switchIcons_1: {fileID: 0}
++  switchIcons_2: {fileID: 0}
++  switchIcons_3: {fileID: 0}
++  switchIcons_4: {fileID: 0}
++  switchIcons_5: {fileID: 0}
++  switchIcons_6: {fileID: 0}
++  switchIcons_7: {fileID: 0}
++  switchIcons_8: {fileID: 0}
++  switchIcons_9: {fileID: 0}
++  switchIcons_10: {fileID: 0}
++  switchIcons_11: {fileID: 0}
++  switchIcons_12: {fileID: 0}
++  switchIcons_13: {fileID: 0}
++  switchIcons_14: {fileID: 0}
++  switchIcons_15: {fileID: 0}
++  switchSmallIcons_0: {fileID: 0}
++  switchSmallIcons_1: {fileID: 0}
++  switchSmallIcons_2: {fileID: 0}
++  switchSmallIcons_3: {fileID: 0}
++  switchSmallIcons_4: {fileID: 0}
++  switchSmallIcons_5: {fileID: 0}
++  switchSmallIcons_6: {fileID: 0}
++  switchSmallIcons_7: {fileID: 0}
++  switchSmallIcons_8: {fileID: 0}
++  switchSmallIcons_9: {fileID: 0}
++  switchSmallIcons_10: {fileID: 0}
++  switchSmallIcons_11: {fileID: 0}
++  switchSmallIcons_12: {fileID: 0}
++  switchSmallIcons_13: {fileID: 0}
++  switchSmallIcons_14: {fileID: 0}
++  switchSmallIcons_15: {fileID: 0}
++  switchManualHTML: 
++  switchAccessibleURLs: 
++  switchLegalInformation: 
++  switchMainThreadStackSize: 1048576
++  switchPresenceGroupId: 
++  switchLogoHandling: 0
++  switchReleaseVersion: 0
++  switchDisplayVersion: 1.0.0
++  switchStartupUserAccount: 0
++  switchSupportedLanguagesMask: 0
++  switchLogoType: 0
++  switchApplicationErrorCodeCategory: 
++  switchUserAccountSaveDataSize: 0
++  switchUserAccountSaveDataJournalSize: 0
++  switchApplicationAttribute: 0
++  switchCardSpecSize: -1
++  switchCardSpecClock: -1
++  switchRatingsMask: 0
++  switchRatingsInt_0: 0
++  switchRatingsInt_1: 0
++  switchRatingsInt_2: 0
++  switchRatingsInt_3: 0
++  switchRatingsInt_4: 0
++  switchRatingsInt_5: 0
++  switchRatingsInt_6: 0
++  switchRatingsInt_7: 0
++  switchRatingsInt_8: 0
++  switchRatingsInt_9: 0
++  switchRatingsInt_10: 0
++  switchRatingsInt_11: 0
++  switchRatingsInt_12: 0
++  switchLocalCommunicationIds_0: 
++  switchLocalCommunicationIds_1: 
++  switchLocalCommunicationIds_2: 
++  switchLocalCommunicationIds_3: 
++  switchLocalCommunicationIds_4: 
++  switchLocalCommunicationIds_5: 
++  switchLocalCommunicationIds_6: 
++  switchLocalCommunicationIds_7: 
++  switchParentalControl: 0
++  switchAllowsScreenshot: 1
++  switchAllowsVideoCapturing: 1
++  switchAllowsRuntimeAddOnContentInstall: 0
++  switchDataLossConfirmation: 0
++  switchUserAccountLockEnabled: 0
++  switchSystemResourceMemory: 16777216
++  switchSupportedNpadStyles: 22
++  switchNativeFsCacheSize: 32
++  switchIsHoldTypeHorizontal: 0
++  switchSupportedNpadCount: 8
++  switchEnableTouchScreen: 1
++  switchSocketConfigEnabled: 0
++  switchTcpInitialSendBufferSize: 32
++  switchTcpInitialReceiveBufferSize: 64
++  switchTcpAutoSendBufferSizeMax: 256
++  switchTcpAutoReceiveBufferSizeMax: 256
++  switchUdpSendBufferSize: 9
++  switchUdpReceiveBufferSize: 42
++  switchSocketBufferEfficiency: 4
++  switchSocketInitializeEnabled: 1
++  switchNetworkInterfaceManagerInitializeEnabled: 1
++  switchUseNewStyleFilepaths: 0
++  switchUseLegacyFmodPriorities: 0
++  switchUseMicroSleepForYield: 1
++  switchEnableRamDiskSupport: 0
++  switchMicroSleepForYieldTime: 25
++  switchRamDiskSpaceSize: 12
++  ps4NPAgeRating: 12
++  ps4NPTitleSecret: 
++  ps4NPTrophyPackPath: 
++  ps4ParentalLevel: 11
++  ps4ContentID: ED1633-NPXX51362_00-0000000000000000
++  ps4Category: 0
++  ps4MasterVersion: 01.00
++  ps4AppVersion: 01.00
++  ps4AppType: 0
++  ps4ParamSfxPath: 
++  ps4VideoOutPixelFormat: 0
++  ps4VideoOutInitialWidth: 1920
++  ps4VideoOutBaseModeInitialWidth: 1920
++  ps4VideoOutReprojectionRate: 60
++  ps4PronunciationXMLPath: 
++  ps4PronunciationSIGPath: 
++  ps4BackgroundImagePath: 
++  ps4StartupImagePath: 
++  ps4StartupImagesFolder: 
++  ps4IconImagesFolder: 
++  ps4SaveDataImagePath: 
++  ps4SdkOverride: 
++  ps4BGMPath: 
++  ps4ShareFilePath: 
++  ps4ShareOverlayImagePath: 
++  ps4PrivacyGuardImagePath: 
++  ps4ExtraSceSysFile: 
++  ps4NPtitleDatPath: 
++  ps4RemotePlayKeyAssignment: -1
++  ps4RemotePlayKeyMappingDir: 
++  ps4PlayTogetherPlayerCount: 0
++  ps4EnterButtonAssignment: 2
++  ps4ApplicationParam1: 0
++  ps4ApplicationParam2: 0
++  ps4ApplicationParam3: 0
++  ps4ApplicationParam4: 0
++  ps4DownloadDataSize: 0
++  ps4GarlicHeapSize: 2048
++  ps4ProGarlicHeapSize: 2560
++  playerPrefsMaxSize: 32768
++  ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
++  ps4pnSessions: 1
++  ps4pnPresence: 1
++  ps4pnFriends: 1
++  ps4pnGameCustomData: 1
++  playerPrefsSupport: 0
++  enableApplicationExit: 0
++  resetTempFolder: 1
++  restrictedAudioUsageRights: 0
++  ps4UseResolutionFallback: 0
++  ps4ReprojectionSupport: 0
++  ps4UseAudio3dBackend: 0
++  ps4UseLowGarlicFragmentationMode: 1
++  ps4SocialScreenEnabled: 0
++  ps4ScriptOptimizationLevel: 2
++  ps4Audio3dVirtualSpeakerCount: 14
++  ps4attribCpuUsage: 0
++  ps4PatchPkgPath: 
++  ps4PatchLatestPkgPath: 
++  ps4PatchChangeinfoPath: 
++  ps4PatchDayOne: 0
++  ps4attribUserManagement: 0
++  ps4attribMoveSupport: 0
++  ps4attrib3DSupport: 0
++  ps4attribShareSupport: 0
++  ps4attribExclusiveVR: 0
++  ps4disableAutoHideSplash: 0
++  ps4videoRecordingFeaturesUsed: 0
++  ps4contentSearchFeaturesUsed: 0
++  ps4CompatibilityPS5: 0
++  ps4AllowPS5Detection: 0
++  ps4GPU800MHz: 1
++  ps4attribEyeToEyeDistanceSettingVR: 0
++  ps4IncludedModules: []
++  ps4attribVROutputEnabled: 0
++  monoEnv: 
++  splashScreenBackgroundSourceLandscape: {fileID: 0}
++  splashScreenBackgroundSourcePortrait: {fileID: 0}
++  blurSplashScreenBackground: 1
++  spritePackerPolicy: 
++  webGLMemorySize: 32
++  webGLExceptionSupport: 1
++  webGLNameFilesAsHashes: 0
++  webGLShowDiagnostics: 0
++  webGLDataCaching: 1
++  webGLDebugSymbols: 0
++  webGLEmscriptenArgs: 
++  webGLModulesDirectory: 
++  webGLTemplate: APPLICATION:Default
++  webGLAnalyzeBuildSize: 0
++  webGLUseEmbeddedResources: 0
++  webGLCompressionFormat: 0
++  webGLWasmArithmeticExceptions: 0
++  webGLLinkerTarget: 1
++  webGLThreadsSupport: 0
++  webGLDecompressionFallback: 0
++  webGLInitialMemorySize: 32
++  webGLMaximumMemorySize: 2048
++  webGLMemoryGrowthMode: 2
++  webGLMemoryLinearGrowthStep: 16
++  webGLMemoryGeometricGrowthStep: 0.2
++  webGLMemoryGeometricGrowthCap: 96
++  webGLPowerPreference: 2
++  scriptingDefineSymbols: {}
++  additionalCompilerArguments: {}
++  platformArchitecture: {}
++  scriptingBackend: {}
++  il2cppCompilerConfiguration: {}
++  il2cppCodeGeneration: {}
++  managedStrippingLevel:
++    EmbeddedLinux: 1
++    GameCoreScarlett: 1
++    GameCoreXboxOne: 1
++    Nintendo Switch: 1
++    PS4: 1
++    PS5: 1
++    QNX: 1
++    Stadia: 1
++    VisionOS: 1
++    WebGL: 1
++    Windows Store Apps: 1
++    XboxOne: 1
++    iPhone: 1
++    tvOS: 1
++  incrementalIl2cppBuild: {}
++  suppressCommonWarnings: 1
++  allowUnsafeCode: 0
++  useDeterministicCompilation: 1
++  additionalIl2CppArgs: 
++  scriptingRuntimeVersion: 1
++  gcIncremental: 0
++  gcWBarrierValidation: 0
++  apiCompatibilityLevelPerPlatform: {}
++  m_RenderingPath: 1
++  m_MobileRenderingPath: 1
++  metroPackageName: Picker3D
++  metroPackageVersion: 
++  metroCertificatePath: 
++  metroCertificatePassword: 
++  metroCertificateSubject: 
++  metroCertificateIssuer: 
++  metroCertificateNotAfter: 0000000000000000
++  metroApplicationDescription: Picker3D
++  wsaImages: {}
++  metroTileShortName: 
++  metroTileShowName: 0
++  metroMediumTileShowName: 0
++  metroLargeTileShowName: 0
++  metroWideTileShowName: 0
++  metroSupportStreamingInstall: 0
++  metroLastRequiredScene: 0
++  metroDefaultTileSize: 1
++  metroTileForegroundText: 2
++  metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628, a: 0}
++  metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628,
++    a: 1}
++  metroSplashScreenUseBackgroundColor: 0
++  platformCapabilities: {}
++  metroTargetDeviceFamilies: {}
++  metroFTAName: 
++  metroFTAFileTypes: []
++  metroProtocolName: 
++  vcxProjDefaultLanguage: 
++  XboxOneProductId: 
++  XboxOneUpdateKey: 
++  XboxOneSandboxId: 
++  XboxOneContentId: 
++  XboxOneTitleId: 
++  XboxOneSCId: 
++  XboxOneGameOsOverridePath: 
++  XboxOnePackagingOverridePath: 
++  XboxOneAppManifestOverridePath: 
++  XboxOneVersion: 1.0.0.0
++  XboxOnePackageEncryption: 0
++  XboxOnePackageUpdateGranularity: 2
++  XboxOneDescription: 
++  XboxOneLanguage:
++  - enus
++  XboxOneCapability: []
++  XboxOneGameRating: {}
++  XboxOneIsContentPackage: 0
++  XboxOneEnhancedXboxCompatibilityMode: 0
++  XboxOneEnableGPUVariability: 1
++  XboxOneSockets: {}
++  XboxOneSplashScreen: {fileID: 0}
++  XboxOneAllowedProductIds: []
++  XboxOnePersistentLocalStorageSize: 0
++  XboxOneXTitleMemory: 8
++  XboxOneOverrideIdentityName: 
++  XboxOneOverrideIdentityPublisher: 
++  vrEditorSettings: {}
++  cloudServicesEnabled: {}
++  luminIcon:
++    m_Name: 
++    m_ModelFolderPath: 
++    m_PortalFolderPath: 
++  luminCert:
++    m_CertPath: 
++    m_SignPackage: 1
++  luminIsChannelApp: 0
++  luminVersion:
++    m_VersionCode: 1
++    m_VersionName: 
++  hmiPlayerDataPath: 
++  hmiForceSRGBBlit: 1
++  embeddedLinuxEnableGamepadInput: 1
++  hmiLogStartupTiming: 0
++  hmiCpuConfiguration: 
++  apiCompatibilityLevel: 6
++  activeInputHandler: 0
++  windowsGamepadBackendHint: 0
++  cloudProjectId: 381a91d6-815c-4b40-9fbb-175fffb99dd0
++  framebufferDepthMemorylessMode: 0
++  qualitySettingsNames: []
++  projectName: Picker3D
++  organizationId: hectorboris
++  cloudEnabled: 0
++  legacyClampBlendShapeWeights: 0
++  hmiLoadingImage: {fileID: 0}
++  platformRequiresReadableAssets: 0
++  virtualTexturingSupportEnabled: 0
++  insecureHttpOption: 0
+diff --git a/ProjectSettings/ProjectVersion.txt b/ProjectSettings/ProjectVersion.txt
+new file mode 100644
+index 0000000..307ccd3
+--- /dev/null
++++ b/ProjectSettings/ProjectVersion.txt
+@@ -0,0 +1,2 @@
++m_EditorVersion: 2022.3.19f1
++m_EditorVersionWithRevision: 2022.3.19f1 (244b723c30a6)
+diff --git a/ProjectSettings/QualitySettings.asset b/ProjectSettings/QualitySettings.asset
+new file mode 100644
+index 0000000..6238eb7
+--- /dev/null
++++ b/ProjectSettings/QualitySettings.asset
+@@ -0,0 +1,136 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!47 &1
++QualitySettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 5
++  m_CurrentQuality: 2
++  m_QualitySettings:
++  - serializedVersion: 2
++    name: Performant
++    pixelLightCount: 0
++    shadows: 0
++    shadowResolution: 0
++    shadowProjection: 1
++    shadowCascades: 1
++    shadowDistance: 20
++    shadowNearPlaneOffset: 3
++    shadowCascade2Split: 0.33333334
++    shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
++    shadowmaskMode: 0
++    skinWeights: 2
++    textureQuality: 0
++    anisotropicTextures: 0
++    antiAliasing: 0
++    softParticles: 0
++    softVegetation: 0
++    realtimeReflectionProbes: 0
++    billboardsFaceCameraPosition: 0
++    vSyncCount: 0
++    lodBias: 0.4
++    maximumLODLevel: 0
++    streamingMipmapsActive: 0
++    streamingMipmapsAddAllCameras: 1
++    streamingMipmapsMemoryBudget: 512
++    streamingMipmapsRenderersPerFrame: 512
++    streamingMipmapsMaxLevelReduction: 2
++    streamingMipmapsMaxFileIORequests: 1024
++    particleRaycastBudget: 4
++    asyncUploadTimeSlice: 2
++    asyncUploadBufferSize: 16
++    asyncUploadPersistentBuffer: 1
++    resolutionScalingFixedDPIFactor: 1
++    customRenderPipeline: {fileID: 11400000, guid: d0e2fc18fe036412f8223b3b3d9ad574,
++      type: 2}
++    excludedTargetPlatforms: []
++  - serializedVersion: 2
++    name: Balanced
++    pixelLightCount: 1
++    shadows: 1
++    shadowResolution: 0
++    shadowProjection: 1
++    shadowCascades: 1
++    shadowDistance: 20
++    shadowNearPlaneOffset: 3
++    shadowCascade2Split: 0.33333334
++    shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
++    shadowmaskMode: 0
++    skinWeights: 4
++    textureQuality: 0
++    anisotropicTextures: 1
++    antiAliasing: 0
++    softParticles: 0
++    softVegetation: 0
++    realtimeReflectionProbes: 0
++    billboardsFaceCameraPosition: 0
++    vSyncCount: 1
++    lodBias: 1
++    maximumLODLevel: 0
++    streamingMipmapsActive: 0
++    streamingMipmapsAddAllCameras: 1
++    streamingMipmapsMemoryBudget: 512
++    streamingMipmapsRenderersPerFrame: 512
++    streamingMipmapsMaxLevelReduction: 2
++    streamingMipmapsMaxFileIORequests: 1024
++    particleRaycastBudget: 64
++    asyncUploadTimeSlice: 2
++    asyncUploadBufferSize: 16
++    asyncUploadPersistentBuffer: 1
++    resolutionScalingFixedDPIFactor: 1
++    customRenderPipeline: {fileID: 11400000, guid: e1260c1148f6143b28bae5ace5e9c5d1,
++      type: 2}
++    excludedTargetPlatforms: []
++  - serializedVersion: 2
++    name: High Fidelity
++    pixelLightCount: 2
++    shadows: 2
++    shadowResolution: 1
++    shadowProjection: 1
++    shadowCascades: 2
++    shadowDistance: 40
++    shadowNearPlaneOffset: 3
++    shadowCascade2Split: 0.33333334
++    shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
++    shadowmaskMode: 1
++    skinWeights: 255
++    textureQuality: 0
++    anisotropicTextures: 2
++    antiAliasing: 4
++    softParticles: 0
++    softVegetation: 1
++    realtimeReflectionProbes: 1
++    billboardsFaceCameraPosition: 1
++    vSyncCount: 1
++    lodBias: 2
++    maximumLODLevel: 0
++    streamingMipmapsActive: 0
++    streamingMipmapsAddAllCameras: 1
++    streamingMipmapsMemoryBudget: 512
++    streamingMipmapsRenderersPerFrame: 512
++    streamingMipmapsMaxLevelReduction: 2
++    streamingMipmapsMaxFileIORequests: 1024
++    particleRaycastBudget: 2048
++    asyncUploadTimeSlice: 2
++    asyncUploadBufferSize: 16
++    asyncUploadPersistentBuffer: 1
++    resolutionScalingFixedDPIFactor: 1
++    customRenderPipeline: {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd,
++      type: 2}
++    excludedTargetPlatforms: []
++  m_PerPlatformDefaultQuality:
++    Android: 1
++    CloudRendering: 2
++    Lumin: 2
++    GameCoreScarlett: 2
++    GameCoreXboxOne: 2
++    Nintendo Switch: 2
++    PS4: 2
++    PS5: 2
++    Server: 0
++    Stadia: 2
++    Standalone: 2
++    WebGL: 1
++    Windows Store Apps: 2
++    XboxOne: 2
++    iPhone: 1
++    tvOS: 1
+diff --git a/ProjectSettings/SceneTemplateSettings.json b/ProjectSettings/SceneTemplateSettings.json
+new file mode 100644
+index 0000000..6f3e60f
+--- /dev/null
++++ b/ProjectSettings/SceneTemplateSettings.json
+@@ -0,0 +1,167 @@
++{
++    "templatePinStates": [],
++    "dependencyTypeInfos": [
++        {
++            "userAdded": false,
++            "type": "UnityEngine.AnimationClip",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEditor.Animations.AnimatorController",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.AnimatorOverrideController",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEditor.Audio.AudioMixerController",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.ComputeShader",
++            "ignore": true,
++            "defaultInstantiationMode": 1,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Cubemap",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.GameObject",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEditor.LightingDataAsset",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": false
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.LightingSettings",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Material",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEditor.MonoScript",
++            "ignore": true,
++            "defaultInstantiationMode": 1,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.PhysicMaterial",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.PhysicsMaterial2D",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Rendering.PostProcessing.PostProcessProfile",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Rendering.PostProcessing.PostProcessResources",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Rendering.VolumeProfile",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEditor.SceneAsset",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": false
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Shader",
++            "ignore": true,
++            "defaultInstantiationMode": 1,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.ShaderVariantCollection",
++            "ignore": true,
++            "defaultInstantiationMode": 1,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Texture",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Texture2D",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        },
++        {
++            "userAdded": false,
++            "type": "UnityEngine.Timeline.TimelineAsset",
++            "ignore": false,
++            "defaultInstantiationMode": 0,
++            "supportsModification": true
++        }
++    ],
++    "defaultDependencyTypeInfo": {
++        "userAdded": false,
++        "type": "<default_scene_template_dependencies>",
++        "ignore": false,
++        "defaultInstantiationMode": 1,
++        "supportsModification": true
++    },
++    "newSceneOverride": 0
++}
+\ No newline at end of file
+diff --git a/ProjectSettings/ShaderGraphSettings.asset b/ProjectSettings/ShaderGraphSettings.asset
+new file mode 100644
+index 0000000..3250b06
+--- /dev/null
++++ b/ProjectSettings/ShaderGraphSettings.asset
+@@ -0,0 +1,17 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &1
++MonoBehaviour:
++  m_ObjectHideFlags: 61
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: de02f9e1d18f588468e474319d09a723, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  shaderVariantLimit: 128
++  customInterpolatorErrorThreshold: 32
++  customInterpolatorWarningThreshold: 16
+diff --git a/ProjectSettings/TagManager.asset b/ProjectSettings/TagManager.asset
+new file mode 100644
+index 0000000..1c92a78
+--- /dev/null
++++ b/ProjectSettings/TagManager.asset
+@@ -0,0 +1,43 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!78 &1
++TagManager:
++  serializedVersion: 2
++  tags: []
++  layers:
++  - Default
++  - TransparentFX
++  - Ignore Raycast
++  - 
++  - Water
++  - UI
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  - 
++  m_SortingLayers:
++  - name: Default
++    uniqueID: 0
++    locked: 0
+diff --git a/ProjectSettings/TimeManager.asset b/ProjectSettings/TimeManager.asset
+new file mode 100644
+index 0000000..558a017
+--- /dev/null
++++ b/ProjectSettings/TimeManager.asset
+@@ -0,0 +1,9 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!5 &1
++TimeManager:
++  m_ObjectHideFlags: 0
++  Fixed Timestep: 0.02
++  Maximum Allowed Timestep: 0.33333334
++  m_TimeScale: 1
++  Maximum Particle Timestep: 0.03
+diff --git a/ProjectSettings/URPProjectSettings.asset b/ProjectSettings/URPProjectSettings.asset
+new file mode 100644
+index 0000000..cd7fd8c
+--- /dev/null
++++ b/ProjectSettings/URPProjectSettings.asset
+@@ -0,0 +1,15 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &1
++MonoBehaviour:
++  m_ObjectHideFlags: 61
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 247994e1f5a72c2419c26a37e9334c01, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_LastMaterialVersion: 7
+diff --git a/ProjectSettings/UnityConnectSettings.asset b/ProjectSettings/UnityConnectSettings.asset
+new file mode 100644
+index 0000000..a88bee0
+--- /dev/null
++++ b/ProjectSettings/UnityConnectSettings.asset
+@@ -0,0 +1,36 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!310 &1
++UnityConnectSettings:
++  m_ObjectHideFlags: 0
++  serializedVersion: 1
++  m_Enabled: 0
++  m_TestMode: 0
++  m_EventOldUrl: https://api.uca.cloud.unity3d.com/v1/events
++  m_EventUrl: https://cdp.cloud.unity3d.com/v1/events
++  m_ConfigUrl: https://config.uca.cloud.unity3d.com
++  m_DashboardUrl: https://dashboard.unity3d.com
++  m_TestInitMode: 0
++  CrashReportingSettings:
++    m_EventUrl: https://perf-events.cloud.unity3d.com
++    m_Enabled: 0
++    m_LogBufferSize: 10
++    m_CaptureEditorExceptions: 1
++  UnityPurchasingSettings:
++    m_Enabled: 0
++    m_TestMode: 0
++  UnityAnalyticsSettings:
++    m_Enabled: 0
++    m_TestMode: 0
++    m_InitializeOnStartup: 1
++    m_PackageRequiringCoreStatsPresent: 0
++  UnityAdsSettings:
++    m_Enabled: 0
++    m_InitializeOnStartup: 1
++    m_TestMode: 0
++    m_IosGameId: 
++    m_AndroidGameId: 
++    m_GameIds: {}
++    m_GameId: 
++  PerformanceReportingSettings:
++    m_Enabled: 0
+diff --git a/ProjectSettings/VFXManager.asset b/ProjectSettings/VFXManager.asset
+new file mode 100644
+index 0000000..3a95c98
+--- /dev/null
++++ b/ProjectSettings/VFXManager.asset
+@@ -0,0 +1,12 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!937362698 &1
++VFXManager:
++  m_ObjectHideFlags: 0
++  m_IndirectShader: {fileID: 0}
++  m_CopyBufferShader: {fileID: 0}
++  m_SortShader: {fileID: 0}
++  m_StripUpdateShader: {fileID: 0}
++  m_RenderPipeSettingsPath: 
++  m_FixedTimeStep: 0.016666668
++  m_MaxDeltaTime: 0.05
+diff --git a/ProjectSettings/VersionControlSettings.asset b/ProjectSettings/VersionControlSettings.asset
+new file mode 100644
+index 0000000..dca2881
+--- /dev/null
++++ b/ProjectSettings/VersionControlSettings.asset
+@@ -0,0 +1,8 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!890905787 &1
++VersionControlSettings:
++  m_ObjectHideFlags: 0
++  m_Mode: Visible Meta Files
++  m_CollabEditorSettings:
++    inProgressEnabled: 1
+diff --git a/ProjectSettings/XRSettings.asset b/ProjectSettings/XRSettings.asset
+new file mode 100644
+index 0000000..482590c
+--- /dev/null
++++ b/ProjectSettings/XRSettings.asset
+@@ -0,0 +1,10 @@
++{
++    "m_SettingKeys": [
++        "VR Device Disabled",
++        "VR Device User Alert"
++    ],
++    "m_SettingValues": [
++        "False",
++        "False"
++    ]
++}
+\ No newline at end of file
+-- 
+2.39.1.windows.1
+
