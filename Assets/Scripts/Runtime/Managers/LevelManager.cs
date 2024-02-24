@@ -2,6 +2,7 @@
 using Runtime.Commands.Level;
 using Runtime.Data.UnityObjects;
 using Runtime.Data.ValueObjects;
+using Runtime.Enums;
 using Runtime.Signals;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace Runtime.Managers
 
         #region Serialized Variables
 
-        [SerializeField] private Transform LevelHolder;
+        [SerializeField] private Transform levelHolder;
         [SerializeField] private byte totalLevelCount;
 
         #endregion
@@ -39,8 +40,8 @@ namespace Runtime.Managers
 
         private void Init()
         {
-            _levelLoaderCommand = new OnLevelLoaderCommand(LevelHolder);
-            _levelDestroyerCommand = new OnLevelDestroyerCommand(LevelHolder);
+            _levelLoaderCommand = new OnLevelLoaderCommand(levelHolder);
+            _levelDestroyerCommand = new OnLevelDestroyerCommand(levelHolder);
         }
 
         private byte GetActiveData()
@@ -108,7 +109,7 @@ namespace Runtime.Managers
         private void Start()
         {
             CoreGameSignals.Instance.onLevelInitialize?.Invoke((byte) (_currentLevel % totalLevelCount));
-            //UISignals
+            CoreUISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.Start, 1);
         }
     }
 }
